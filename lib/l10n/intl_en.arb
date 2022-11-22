@@ -1,1 +1,6 @@
-{}
+{
+    "@@locale": "en",
+    "city_weather": "City Weather",
+    "weather_screen": "Weather Screen"
+
+}

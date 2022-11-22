@@ -15,7 +15,7 @@ class Home extends ConsumerWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.router.pushNamed(const WeatherScreen().path),
+          onPressed: () => context.router.pushNamed(const SearchScreen().path),
           child: Text(S.current.weather_screen),
         ),
       ),

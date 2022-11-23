@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:city_weather/feature/search/data/models/search_response.dart';
+import 'package:city_weather/feature/search/domain/search_list_state_provider.dart';
 import 'package:city_weather/feature/weather/domain/weather_notifier.dart';
 import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,11 @@ class SearchScreen extends ConsumerStatefulWidget {
 }
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
-  List<String> userLocationList = [];
-
   @override
   Widget build(BuildContext context) {
+    final userLocationList = ref.watch(searchListStateProvider);
     final searchState = ref.watch(searchNotifierProvider);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(58.0),
@@ -61,7 +62,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         itemCount: searchResult.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () => userList.add(searchResult[index].name.toString()),
+            onTap: () => userList.any(
+                    (element) => element.contains(searchResult[index].name))
+                ? null
+                : userList.add(searchResult[index].name.toString()),
             child: Card(
               child: Text(searchResult[index].name),
             ),
@@ -71,6 +75,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 
+  //RESPONZIVNO REFRESANJE LIST UKOLIKO JE DODAN ITEM
   _userLocations(BuildContext ctx, List<String> locationList) {
     return Expanded(
       child: ListView.builder(

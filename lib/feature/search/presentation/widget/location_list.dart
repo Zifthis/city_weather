@@ -54,7 +54,14 @@ class _LocationListState extends ConsumerState<LocationList> {
                       context.router.pushNamed(const WeatherScreen().path);
                     },
                     onLongPress: () => setState(() {
+                      SnackBar snackBar = SnackBar(
+                        content: Text(
+                          '${widget.locationList[index]} removed from the list!',
+                          textAlign: TextAlign.center,
+                        ),
+                      );
                       widget.locationList.removeAt(index);
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }),
                     child: CardList(
                       title: widget.locationList[index].toString(),

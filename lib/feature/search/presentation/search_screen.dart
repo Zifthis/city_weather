@@ -1,10 +1,8 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:city_weather/feature/search/domain/entities/search.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_list_state_provider.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
-import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
+import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
+import 'package:city_weather/feature/search/presentation/widget/location_list.dart';
 import 'package:city_weather/generated/l10n.dart';
-import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,80 +20,72 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final searchState = ref.watch(searchNotifierProvider);
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(58.0),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/location.jpg"),
+            opacity: -40,
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: S.current.search_city,
+            Padding(
+              padding: const EdgeInsets.all(60.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(width: 3.0),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(width: 3.0),
+                        ),
+                        border: const OutlineInputBorder(
+                            borderSide: BorderSide(width: 3.0)),
+                        labelText: S.current.search_city,
+                        labelStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        )),
+                    onChanged: (input) => ref
+                        .read(searchNotifierProvider.notifier)
+                        .getSearchResult(input),
+                  ),
+                  searchState.maybeWhen(
+                    orElse: () => const SizedBox(),
+                    loading: () => const CircularProgressIndicator.adaptive(),
+                    loaded: (searchResult) => DropDownList(
+                        searchResult: searchResult,
+                        userLocationList: userLocationList),
+                  ),
+                ],
               ),
-              onChanged: (input) => ref
-                  .read(searchNotifierProvider.notifier)
-                  .getSearchResult(input),
-            ),
-            searchState.maybeWhen(
-              orElse: () => const SizedBox(),
-              loading: () => const CircularProgressIndicator.adaptive(),
-              loaded: (searchResult) =>
-                  _dropDownSearchList(searchResult, userLocationList),
-            ),
-            const SizedBox(
-              height: 58,
             ),
             userLocationList.isEmpty
-                ? Text(S.current.error_search)
-                : _userLocations(context, userLocationList),
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 68.0),
+                    child: Text(
+                      S.current.error_search,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                  )
+                : LocationList(
+                    locationList: userLocationList,
+                  )
           ],
         ),
-      ),
-    );
-  }
-
-  _dropDownSearchList(List<Search> searchResult, List<String> userList) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: searchResult.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () => userList.any((element) =>
-                    element.contains(searchResult[index].name ?? ''))
-                ? null
-                : userList.add(searchResult[index].name.toString()),
-            child: Card(
-              child: Text(searchResult[index].name ?? ''),
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  //RESPONZIVNO REFRESANJE LIST UKOLIKO JE DODAN ITEM
-  _userLocations(BuildContext ctx, List<String> locationList) {
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: locationList.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              ref
-                  .read(weatherNotifierProvider.notifier)
-                  .getCityWeather(locationList[index]);
-              ctx.router.pushNamed(const WeatherScreen().path);
-            },
-            onLongPress: () => setState(() {
-              locationList.removeAt(index);
-            }),
-            child: Card(
-              child: Text(locationList[index].toString()),
-            ),
-          );
-        },
       ),
     );
   }

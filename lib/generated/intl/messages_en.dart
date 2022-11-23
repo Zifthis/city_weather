@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "city_weather": MessageLookupByLibrary.simpleMessage("City Weather"),
         "error_search": MessageLookupByLibrary.simpleMessage(
             "Search and add your locations to the list"),
+        "location_list":
+            MessageLookupByLibrary.simpleMessage("Saved Locations"),
         "search_city": MessageLookupByLibrary.simpleMessage("Search City"),
         "weather_screen": MessageLookupByLibrary.simpleMessage("Weather Screen")
       };

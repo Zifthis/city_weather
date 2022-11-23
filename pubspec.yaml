@@ -43,4 +43,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  assets:
+    - assets/location.jpg
+    - assets/weather.jpg

@@ -89,6 +89,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Saved Locations`
+  String get location_list {
+    return Intl.message(
+      'Saved Locations',
+      name: 'location_list',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

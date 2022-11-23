@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'weather_state.dart';
+part of 'search_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$WeatherState {
+mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherResponse weatherResponse) loaded,
+    required TResult Function(List<Search> searchList) loaded,
     required TResult Function(AppFailure error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$WeatherState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherResponse weatherResponse)? loaded,
+    TResult? Function(List<Search> searchList)? loaded,
     TResult? Function(AppFailure error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$WeatherState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherResponse weatherResponse)? loaded,
+    TResult Function(List<Search> searchList)? loaded,
     TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,16 @@ mixin _$WeatherState {
 }
 
 /// @nodoc
-abstract class $WeatherStateCopyWith<$Res> {
-  factory $WeatherStateCopyWith(
-          WeatherState value, $Res Function(WeatherState) then) =
-      _$WeatherStateCopyWithImpl<$Res, WeatherState>;
+abstract class $SearchStateCopyWith<$Res> {
+  factory $SearchStateCopyWith(
+          SearchState value, $Res Function(SearchState) then) =
+      _$SearchStateCopyWithImpl<$Res, SearchState>;
 }
 
 /// @nodoc
-class _$WeatherStateCopyWithImpl<$Res, $Val extends WeatherState>
-    implements $WeatherStateCopyWith<$Res> {
-  _$WeatherStateCopyWithImpl(this._value, this._then);
+class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
+    implements $SearchStateCopyWith<$Res> {
+  _$SearchStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res, _$_Initial>
+    extends _$SearchStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -108,7 +108,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'WeatherState.initial()';
+    return 'SearchState.initial()';
   }
 
   @override
@@ -125,7 +125,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherResponse weatherResponse) loaded,
+    required TResult Function(List<Search> searchList) loaded,
     required TResult Function(AppFailure error) error,
   }) {
     return initial();
@@ -136,7 +136,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherResponse weatherResponse)? loaded,
+    TResult? Function(List<Search> searchList)? loaded,
     TResult? Function(AppFailure error)? error,
   }) {
     return initial?.call();
@@ -147,7 +147,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherResponse weatherResponse)? loaded,
+    TResult Function(List<Search> searchList)? loaded,
     TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
@@ -195,7 +195,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements WeatherState {
+abstract class _Initial implements SearchState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -208,7 +208,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res, _$_Loading>
+    extends _$SearchStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -221,7 +221,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'WeatherState.loading()';
+    return 'SearchState.loading()';
   }
 
   @override
@@ -238,7 +238,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherResponse weatherResponse) loaded,
+    required TResult Function(List<Search> searchList) loaded,
     required TResult Function(AppFailure error) error,
   }) {
     return loading();
@@ -249,7 +249,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherResponse weatherResponse)? loaded,
+    TResult? Function(List<Search> searchList)? loaded,
     TResult? Function(AppFailure error)? error,
   }) {
     return loading?.call();
@@ -260,7 +260,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherResponse weatherResponse)? loaded,
+    TResult Function(List<Search> searchList)? loaded,
     TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
@@ -308,7 +308,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements WeatherState {
+abstract class _Loading implements SearchState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -317,12 +317,12 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({WeatherResponse weatherResponse});
+  $Res call({List<Search> searchList});
 }
 
 /// @nodoc
 class __$$_LoadedCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res, _$_Loaded>
+    extends _$SearchStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
@@ -330,13 +330,13 @@ class __$$_LoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherResponse = null,
+    Object? searchList = null,
   }) {
     return _then(_$_Loaded(
-      null == weatherResponse
-          ? _value.weatherResponse
-          : weatherResponse // ignore: cast_nullable_to_non_nullable
-              as WeatherResponse,
+      null == searchList
+          ? _value._searchList
+          : searchList // ignore: cast_nullable_to_non_nullable
+              as List<Search>,
     ));
   }
 }
@@ -344,14 +344,18 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.weatherResponse);
+  const _$_Loaded(final List<Search> searchList) : _searchList = searchList;
 
+  final List<Search> _searchList;
   @override
-  final WeatherResponse weatherResponse;
+  List<Search> get searchList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_searchList);
+  }
 
   @override
   String toString() {
-    return 'WeatherState.loaded(weatherResponse: $weatherResponse)';
+    return 'SearchState.loaded(searchList: $searchList)';
   }
 
   @override
@@ -359,12 +363,13 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            (identical(other.weatherResponse, weatherResponse) ||
-                other.weatherResponse == weatherResponse));
+            const DeepCollectionEquality()
+                .equals(other._searchList, _searchList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, weatherResponse);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_searchList));
 
   @JsonKey(ignore: true)
   @override
@@ -377,10 +382,10 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherResponse weatherResponse) loaded,
+    required TResult Function(List<Search> searchList) loaded,
     required TResult Function(AppFailure error) error,
   }) {
-    return loaded(weatherResponse);
+    return loaded(searchList);
   }
 
   @override
@@ -388,10 +393,10 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherResponse weatherResponse)? loaded,
+    TResult? Function(List<Search> searchList)? loaded,
     TResult? Function(AppFailure error)? error,
   }) {
-    return loaded?.call(weatherResponse);
+    return loaded?.call(searchList);
   }
 
   @override
@@ -399,12 +404,12 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherResponse weatherResponse)? loaded,
+    TResult Function(List<Search> searchList)? loaded,
     TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(weatherResponse);
+      return loaded(searchList);
     }
     return orElse();
   }
@@ -447,10 +452,10 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements WeatherState {
-  const factory _Loaded(final WeatherResponse weatherResponse) = _$_Loaded;
+abstract class _Loaded implements SearchState {
+  const factory _Loaded(final List<Search> searchList) = _$_Loaded;
 
-  WeatherResponse get weatherResponse;
+  List<Search> get searchList;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -466,7 +471,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$WeatherStateCopyWithImpl<$Res, _$_Error>
+    extends _$SearchStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -495,7 +500,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'WeatherState.error(error: $error)';
+    return 'SearchState.error(error: $error)';
   }
 
   @override
@@ -520,7 +525,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherResponse weatherResponse) loaded,
+    required TResult Function(List<Search> searchList) loaded,
     required TResult Function(AppFailure error) error,
   }) {
     return error(this.error);
@@ -531,7 +536,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherResponse weatherResponse)? loaded,
+    TResult? Function(List<Search> searchList)? loaded,
     TResult? Function(AppFailure error)? error,
   }) {
     return error?.call(this.error);
@@ -542,7 +547,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherResponse weatherResponse)? loaded,
+    TResult Function(List<Search> searchList)? loaded,
     TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
@@ -590,7 +595,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements WeatherState {
+abstract class _Error implements SearchState {
   const factory _Error(final AppFailure error) = _$_Error;
 
   AppFailure get error;

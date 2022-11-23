@@ -69,6 +69,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search and add your locations to the list`
+  String get error_search {
+    return Intl.message(
+      'Search and add your locations to the list',
+      name: 'error_search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search City`
+  String get search_city {
+    return Intl.message(
+      'Search City',
+      name: 'search_city',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,3 +1,6 @@
+import 'package:city_weather/feature/weather/domain/entities/current.dart';
+import 'package:city_weather/feature/weather/domain/entities/location.dart';
+import 'package:city_weather/feature/weather/domain/entities/weather.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part "weather_response.g.dart";
@@ -15,6 +18,11 @@ class WeatherResponse {
   factory WeatherResponse.fromJson(Map<String, dynamic> json) =>
       _$WeatherResponseFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherResponseToJson(this);
+
+  Weather toDomain() => Weather(
+        current: current!.toDomain(),
+        location: location!.toDomain(),
+      );
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -29,6 +37,11 @@ class CurrentResponse {
   factory CurrentResponse.fromJson(Map<String, dynamic> json) =>
       _$CurrentResponseFromJson(json);
   Map<String, dynamic> toJson() => _$CurrentResponseToJson(this);
+
+  Current toDomain() => Current(
+        feelslikeC: feelslikeC,
+        tempC: tempC,
+      );
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -43,4 +56,9 @@ class LocationResponse {
   factory LocationResponse.fromJson(Map<String, dynamic> json) =>
       _$LocationResponseFromJson(json);
   Map<String, dynamic> toJson() => _$LocationResponseToJson(this);
+
+  Location toDomain() => Location(
+        localtime: localtime,
+        name: name,
+      );
 }

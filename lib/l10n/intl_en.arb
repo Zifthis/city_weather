@@ -1,6 +1,8 @@
 {
     "@@locale": "en",
     "city_weather": "City Weather",
-    "weather_screen": "Weather Screen"
+    "weather_screen": "Weather Screen",
+    "error_search": "Search and add your locations to the list",
+    "search_city": "Search City"
 
 }

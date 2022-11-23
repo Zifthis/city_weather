@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:city_weather/feature/search/data/models/search_response.dart';
-import 'package:city_weather/feature/search/domain/search_list_state_provider.dart';
-import 'package:city_weather/feature/weather/domain/weather_notifier.dart';
+import 'package:city_weather/feature/search/domain/entities/search.dart';
+import 'package:city_weather/feature/search/domain/notifier/search_list_state_provider.dart';
+import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
+import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
+import 'package:city_weather/generated/l10n.dart';
 import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:city_weather/feature/search/domain/search_notifier.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
@@ -27,9 +27,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         child: Column(
           children: [
             TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Search City',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: S.current.search_city,
               ),
               onChanged: (input) => ref
                   .read(searchNotifierProvider.notifier)
@@ -45,7 +45,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               height: 58,
             ),
             userLocationList.isEmpty
-                ? const Text('pretrazite i dodajte vase lokacije u listu')
+                ? Text(S.current.error_search)
                 : _userLocations(context, userLocationList),
           ],
         ),
@@ -53,8 +53,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 
-  _dropDownSearchList(
-      List<SearchResponse> searchResult, List<String> userList) {
+  _dropDownSearchList(List<Search> searchResult, List<String> userList) {
     return SizedBox(
       height: 200,
       child: ListView.builder(
@@ -62,12 +61,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         itemCount: searchResult.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () => userList.any(
-                    (element) => element.contains(searchResult[index].name))
+            onTap: () => userList.any((element) =>
+                    element.contains(searchResult[index].name ?? ''))
                 ? null
                 : userList.add(searchResult[index].name.toString()),
             child: Card(
-              child: Text(searchResult[index].name),
+              child: Text(searchResult[index].name ?? ''),
             ),
           );
         },

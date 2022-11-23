@@ -1,4 +1,4 @@
-import 'package:city_weather/feature/weather/domain/weather_notifier.dart';
+import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

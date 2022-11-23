@@ -1,6 +1,6 @@
 import 'package:city_weather/feature/search/data/repository/i_search_repository.dart';
 import 'package:city_weather/feature/search/data/repository/search_repository.dart';
-import 'package:city_weather/feature/search/domain/search_state.dart';
+import 'package:city_weather/feature/search/domain/notifier/search_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final searchNotifierProvider =

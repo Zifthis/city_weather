@@ -1,6 +1,6 @@
 import 'package:city_weather/feature/weather/data/repository/i_weather_repository.dart';
 import 'package:city_weather/feature/weather/data/repository/weather_repository.dart';
-import 'package:city_weather/feature/weather/domain/weather_state.dart';
+import 'package:city_weather/feature/weather/domain/notifier/weather_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final weatherNotifierProvider =

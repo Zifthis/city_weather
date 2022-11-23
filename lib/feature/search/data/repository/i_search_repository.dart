@@ -1,6 +1,6 @@
 import 'package:city_weather/common/domain/error_handling/either_failure_or.dart';
-import 'package:city_weather/feature/search/data/models/search_response.dart';
+import 'package:city_weather/feature/search/domain/entities/search.dart';
 
 abstract class ISearchRepository {
-  EitherAppFailureOr<List<SearchResponse>> fetchSearchResponse(String search);
+  EitherAppFailureOr<List<Search>> fetchSearchResponse(String search);
 }

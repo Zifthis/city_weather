@@ -22,7 +22,7 @@ class AppFailure implements Exception {
       dioError.response?.data as Map<String, dynamic>,
     );
     return AppFailure(
-      title: response.message ?? "S.current.dio_error",
+      title: response.message ?? 'Dio Error',
     );
   }
 }

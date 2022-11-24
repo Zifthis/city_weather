@@ -11,71 +11,60 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
+import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:flutter/material.dart' as _i4;
 
-import '../common/presentation/home.dart' as _i1;
-import '../feature/search/presentation/search_screen.dart' as _i3;
+import '../feature/search/presentation/search_screen.dart' as _i1;
 import '../feature/weather/presentation/weather_screen.dart' as _i2;
 
-class AppRouter extends _i4.RootStackRouter {
-  AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
+class AppRouter extends _i3.RootStackRouter {
+  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
-    Home.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+  final Map<String, _i3.PageFactory> pagesMap = {
+    SearchScreen.name: (routeData) {
+      return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.Home(),
+        child: const _i1.SearchScreen(),
       );
     },
     WeatherScreen.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.WeatherScreen(),
-      );
-    },
-    SearchScreen.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const _i3.SearchScreen(),
       );
     },
   };
 
   @override
-  List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(
-          Home.name,
+  List<_i3.RouteConfig> get routes => [
+        _i3.RouteConfig(
+          SearchScreen.name,
           path: '/',
         ),
-        _i4.RouteConfig(
+        _i3.RouteConfig(
           WeatherScreen.name,
           path: '/weather_screen',
-        ),
-        _i4.RouteConfig(
-          SearchScreen.name,
-          path: '/search_screen',
         ),
       ];
 }
 
 /// generated route for
-/// [_i1.Home]
-class Home extends _i4.PageRouteInfo<void> {
-  const Home()
+/// [_i1.SearchScreen]
+class SearchScreen extends _i3.PageRouteInfo<void> {
+  const SearchScreen()
       : super(
-          Home.name,
+          SearchScreen.name,
           path: '/',
         );
 
-  static const String name = 'Home';
+  static const String name = 'SearchScreen';
 }
 
 /// generated route for
 /// [_i2.WeatherScreen]
-class WeatherScreen extends _i4.PageRouteInfo<void> {
+class WeatherScreen extends _i3.PageRouteInfo<void> {
   const WeatherScreen()
       : super(
           WeatherScreen.name,
@@ -83,16 +72,4 @@ class WeatherScreen extends _i4.PageRouteInfo<void> {
         );
 
   static const String name = 'WeatherScreen';
-}
-
-/// generated route for
-/// [_i3.SearchScreen]
-class SearchScreen extends _i4.PageRouteInfo<void> {
-  const SearchScreen()
-      : super(
-          SearchScreen.name,
-          path: '/search_screen',
-        );
-
-  static const String name = 'SearchScreen';
 }

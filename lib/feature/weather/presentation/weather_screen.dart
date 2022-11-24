@@ -12,7 +12,7 @@ class WeatherScreen extends ConsumerWidget {
     return Scaffold(
       body: state.maybeWhen(
           orElse: () => const Center(
-                child: CircularProgressIndicator(),
+                child: Text('data'),
               ),
           loaded: (value) => WeatherDisplay(
               location: value.location?.name ?? '',

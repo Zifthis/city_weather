@@ -22,8 +22,8 @@ class WeatherNotifier extends StateNotifier<WeatherState> {
     final response = await _iWeatherRepository.fetchWeatherResponse(cityName);
 
     state = await response.fold(
-      (l) => WeatherState.error(l),
-      (r) => WeatherState.loaded(r),
+      (error) => WeatherState.error(error),
+      (data) => WeatherState.loaded(data),
     );
   }
 }

@@ -99,6 +99,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Server Error`
+  String get server_error {
+    return Intl.message(
+      'Server Error',
+      name: 'server_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong!`
+  String get server_error_description {
+    return Intl.message(
+      'Something went wrong!',
+      name: 'server_error_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dio Error`
+  String get dio_error {
+    return Intl.message(
+      'Dio Error',
+      name: 'dio_error',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

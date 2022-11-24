@@ -1,4 +1,5 @@
 import 'package:city_weather/common/data/model/error_response.dart';
+import 'package:city_weather/generated/l10n.dart';
 import 'package:dio/dio.dart';
 
 class AppFailure implements Exception {
@@ -22,7 +23,7 @@ class AppFailure implements Exception {
       dioError.response?.data as Map<String, dynamic>,
     );
     return AppFailure(
-      title: response.message ?? 'Dio Error',
+      title: response.message ?? S.current.dio_error,
     );
   }
 }
@@ -33,10 +34,10 @@ enum Failure {
 
 extension FailureProperties on Failure {
   static final _title = {
-    Failure.serverError: 'title',
+    Failure.serverError: S.current.server_error,
   };
   static final _description = {
-    Failure.serverError: 'description',
+    Failure.serverError: S.current.server_error_description,
   };
 
   String get title => _title[this]!;

@@ -4,6 +4,9 @@
     "weather_screen": "Weather Screen",
     "error_search": "Search and add your locations to the list",
     "search_city": "Search City",
-    "location_list": "Saved Locations"
+    "location_list": "Saved Locations",
+    "server_error": "Server Error",
+    "server_error_description": "Something went wrong!",
+    "dio_error": "Dio Error"
 
 }

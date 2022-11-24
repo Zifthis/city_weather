@@ -1,4 +1,4 @@
-import 'package:city_weather/feature/search/domain/notifier/search_list_state_provider.dart';
+import 'package:city_weather/feature/search/domain/notifier/search_list_provider.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
 import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
 import 'package:city_weather/feature/search/presentation/widget/location_list.dart';
@@ -18,7 +18,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userLocationList = ref.watch(searchListStateProvider);
+    final userLocationList = ref.watch(searchListProvider);
     final searchState = ref.watch(searchNotifierProvider);
 
     return Scaffold(
@@ -78,8 +78,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   ],
                 ),
               ),
-              userLocationList.isEmpty
-                  ? Padding(
+              userLocationList.isNotEmpty
+                  ? LocationList(
+                      locationList: userLocationList,
+                    )
+                  : Padding(
                       padding: const EdgeInsets.only(bottom: 68.0),
                       child: Text(
                         S.current.error_search,
@@ -89,9 +92,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                           fontSize: 15.0,
                         ),
                       ),
-                    )
-                  : LocationList(
-                      locationList: userLocationList,
                     )
             ],
           ),

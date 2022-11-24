@@ -26,6 +26,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
           myController.clear();
+          ref.read(searchNotifierProvider.notifier).getSearchResult('');
         },
         child: Container(
           decoration: const BoxDecoration(
@@ -67,36 +68,54 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                           .read(searchNotifierProvider.notifier)
                           .getSearchResult(input),
                     ),
-                    searchState.maybeWhen(
-                      orElse: () => const SizedBox(),
-                      loading: () => const CircularProgressIndicator.adaptive(),
-                      loaded: (searchResult) => DropDownList(
-                        searchResult: searchResult,
-                        userLocationList: userLocationList,
-                      ),
+                    Stack(
+                      children: [
+                        ListWidget(userLocationList: userLocationList),
+                        searchState.maybeWhen(
+                          orElse: () => const SizedBox(),
+                          loading: () => const Center(
+                              child: CircularProgressIndicator.adaptive()),
+                          loaded: (searchResult) => DropDownList(
+                            searchResult: searchResult,
+                            userLocationList: userLocationList,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              userLocationList.isNotEmpty
-                  ? LocationList(
-                      locationList: userLocationList,
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.only(bottom: 68.0),
-                      child: Text(
-                        S.current.error_search,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.0,
-                        ),
-                      ),
-                    )
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class ListWidget extends ConsumerWidget {
+  final List<String> userLocationList;
+  const ListWidget({
+    super.key,
+    required this.userLocationList,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return userLocationList.isNotEmpty
+        ? LocationList(
+            locationList: userLocationList,
+          )
+        : Padding(
+            padding: const EdgeInsets.only(top: 28.0),
+            child: Text(
+              S.current.error_search,
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+          );
   }
 }

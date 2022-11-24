@@ -14,29 +14,27 @@ class DropDownList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: searchResult.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              SnackBar snackBar = SnackBar(
-                content: Text(
-                  '${searchResult[index].name} is already in the list!',
-                  textAlign: TextAlign.center,
-                ),
-              );
-              userLocationList.any((element) =>
-                      element.contains(searchResult[index].name ?? ''))
-                  ? ScaffoldMessenger.of(context).showSnackBar(snackBar)
-                  : userLocationList.add(searchResult[index].name.toString());
-            },
-            child: CardList(title: searchResult[index].name ?? ''),
-          );
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      itemCount: searchResult.length,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            SnackBar snackBar = SnackBar(
+              content: Text(
+                '${searchResult[index].name} is already in the list!',
+                textAlign: TextAlign.center,
+              ),
+            );
+            userLocationList.any((element) =>
+                    element.contains(searchResult[index].name ?? ''))
+                ? ScaffoldMessenger.of(context).showSnackBar(snackBar)
+                : userLocationList.add(searchResult[index].name.toString());
+          },
+          child: CardList(title: searchResult[index].name ?? ''),
+        );
+      },
     );
   }
 }

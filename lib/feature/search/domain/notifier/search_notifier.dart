@@ -26,4 +26,8 @@ class SearchNotifier extends StateNotifier<SearchState> {
       (data) => SearchState.loaded(data),
     );
   }
+
+  Future<void> setInitSearch() async {
+    state = const SearchState.initial();
+  }
 }

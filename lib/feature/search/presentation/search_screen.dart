@@ -1,7 +1,7 @@
 import 'package:city_weather/feature/search/domain/notifier/search_list_provider.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
 import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
-import 'package:city_weather/feature/search/presentation/widget/location_list.dart';
+import 'package:city_weather/feature/search/presentation/widget/list_widget.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +26,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
           myController.clear();
-          ref.read(searchNotifierProvider.notifier).getSearchResult('');
+          ref.read(searchNotifierProvider.notifier).setInitSearch();
         },
         child: Container(
           decoration: const BoxDecoration(
@@ -90,32 +90,5 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ),
       ),
     );
-  }
-}
-
-class ListWidget extends ConsumerWidget {
-  final List<String> userLocationList;
-  const ListWidget({
-    super.key,
-    required this.userLocationList,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return userLocationList.isNotEmpty
-        ? LocationList(
-            locationList: userLocationList,
-          )
-        : Padding(
-            padding: const EdgeInsets.only(top: 28.0),
-            child: Text(
-              S.current.error_search,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-              ),
-            ),
-          );
   }
 }

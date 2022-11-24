@@ -11,12 +11,24 @@ class WeatherScreen extends ConsumerWidget {
     final state = ref.watch(weatherNotifierProvider);
     return Scaffold(
       body: state.maybeWhen(
-          orElse: () => const Center(
-                child: Text('data'),
-              ),
+          orElse: () => _buildWidget(context),
           loaded: (value) => WeatherDisplay(
               location: value.location?.name ?? '',
               title: value.current?.tempC.toString() ?? '')),
     );
+  }
+
+  _buildWidget(BuildContext context) {
+    return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/weather.jpg"),
+            opacity: 40,
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: const SizedBox());
   }
 }

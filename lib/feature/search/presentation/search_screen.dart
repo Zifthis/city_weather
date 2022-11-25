@@ -3,7 +3,7 @@ import 'package:city_weather/feature/search/domain/notifier/search_list_provider
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
 import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
 import 'package:city_weather/feature/search/presentation/widget/list_widget.dart';
-import 'package:city_weather/generated/l10n.dart';
+import 'package:city_weather/feature/search/presentation/widget/text_field_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -35,6 +35,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final userLocationList = ref.watch(searchListProvider);
     final searchState = ref.watch(searchNotifierProvider);
@@ -55,7 +61,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             ),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.all(60.0),
@@ -65,27 +71,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                     const SizedBox(
                       height: 32,
                     ),
-                    TextField(
-                      controller: myController,
-                      decoration: InputDecoration(
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 3.0),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 3.0),
-                          ),
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide(width: 3.0)),
-                          labelText: S.current.search_city,
-                          labelStyle: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          )),
-                      onChanged: (input) => ref
-                          .read(searchNotifierProvider.notifier)
-                          .getSearchResult(input),
-                    ),
+                    TextFieldInput(myController: myController, ref: ref),
                     Stack(
                       children: [
                         ListWidget(userLocationList: userLocationList),
@@ -103,21 +89,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () async {
-                    final stringList =
-                        await ref.read(localStorageProvider).getStringList();
-                    print(stringList);
-                  },
-                  child: const Text('data')),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void getSavedList() async {
-    await ref.read(localStorageProvider).getStringList();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:city_weather/common/data/local_storage.dart';
 import 'package:city_weather/feature/search/presentation/widget/card_list.dart';
 import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
 import 'package:city_weather/generated/l10n.dart';
@@ -29,7 +30,7 @@ class _LocationListState extends ConsumerState<LocationList> {
             child: Text(
               S.current.location_list,
               style: const TextStyle(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                   fontSize: 24,
                   color: Colors.black),
             ),
@@ -37,7 +38,7 @@ class _LocationListState extends ConsumerState<LocationList> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 1.5,
               child: RawScrollbar(
                 thumbColor: Colors.blueGrey,
                 radius: const Radius.circular(20),
@@ -48,22 +49,8 @@ class _LocationListState extends ConsumerState<LocationList> {
                   itemCount: widget.locationList.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {
-                        ref
-                            .read(weatherNotifierProvider.notifier)
-                            .getCityWeather(widget.locationList[index]);
-                        context.router.pushNamed(const WeatherScreen().path);
-                      },
-                      onLongPress: () => setState(() {
-                        SnackBar snackBar = SnackBar(
-                          content: Text(
-                            '${widget.locationList[index]} removed from the list!',
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                        widget.locationList.removeAt(index);
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }),
+                      onTap: () => _onTap(index),
+                      onLongPress: () => _onLongPress(index),
                       child: CardList(
                         title: widget.locationList[index].toString(),
                       ),
@@ -76,5 +63,28 @@ class _LocationListState extends ConsumerState<LocationList> {
         ],
       ),
     );
+  }
+
+  void _onTap(int index) {
+    ref
+        .read(weatherNotifierProvider.notifier)
+        .getCityWeather(widget.locationList[index]);
+    context.router.pushNamed(const WeatherScreen().path);
+  }
+
+  void _onLongPress(int index) {
+    setState(() {
+      SnackBar snackBar = SnackBar(
+        content: Text(
+          '${widget.locationList[index]} removed from the list!',
+          textAlign: TextAlign.center,
+        ),
+      );
+      widget.locationList.removeAt(index);
+      ref
+          .read(localStorageProvider)
+          .setStringList(widget.locationList as List<String>);
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
   }
 }

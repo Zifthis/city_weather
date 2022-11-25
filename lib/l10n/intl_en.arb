@@ -7,6 +7,6 @@
     "location_list": "Saved Locations",
     "server_error": "Server Error",
     "server_error_description": "Something went wrong!",
-    "dio_error": "Dio Error"
-
+    "dio_error": "Dio Error",
+    "already_in_list": "is already in the list!"
 }

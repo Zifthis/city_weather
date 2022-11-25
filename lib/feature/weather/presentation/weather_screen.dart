@@ -11,14 +11,14 @@ class WeatherScreen extends ConsumerWidget {
     final state = ref.watch(weatherNotifierProvider);
     return Scaffold(
       body: state.maybeWhen(
-          orElse: () => _buildWidget(context),
+          orElse: () => _buildPlaceholderWidget(context),
           loaded: (value) => WeatherDisplay(
               location: value.location?.name ?? '',
               title: value.current?.tempC.toString() ?? '')),
     );
   }
 
-  _buildWidget(BuildContext context) {
+  _buildPlaceholderWidget(BuildContext context) {
     return Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

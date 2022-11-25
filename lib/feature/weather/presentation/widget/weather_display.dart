@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class WeatherDisplay extends StatelessWidget {
   final String title;
   final String location;
-  const WeatherDisplay({Key? key, required this.title, required this.location})
-      : super(key: key);
+  const WeatherDisplay({
+    Key? key,
+    required this.title,
+    required this.location,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

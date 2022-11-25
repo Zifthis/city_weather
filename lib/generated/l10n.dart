@@ -129,6 +129,16 @@ class S {
       args: [],
     );
   }
+
+  /// `is already in the list!`
+  String get already_in_list {
+    return Intl.message(
+      'is already in the list!',
+      name: 'already_in_list',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

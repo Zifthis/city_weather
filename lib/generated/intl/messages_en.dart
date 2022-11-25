@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "already_in_list":
+            MessageLookupByLibrary.simpleMessage("is already in the list!"),
         "city_weather": MessageLookupByLibrary.simpleMessage("City Weather"),
         "dio_error": MessageLookupByLibrary.simpleMessage("Dio Error"),
         "error_search": MessageLookupByLibrary.simpleMessage(

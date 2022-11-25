@@ -114,9 +114,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   void _currentLocation() async {
     final loc = await ref.read(getCurrentLocationProvider);
-    print(loc);
-    print('--------------');
-    print(loc.toString());
     ref
         .read(currentLocationWeatherNotifierProvider.notifier)
         .getCurrentLocationWeather(loc as List<double>);

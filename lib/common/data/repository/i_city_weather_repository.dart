@@ -5,4 +5,5 @@ import 'package:city_weather/feature/weather/domain/entities/weather.dart';
 abstract class ICityWeatherRepository {
   EitherAppFailureOr<List<Search>> fetchSearchResponse(String search);
   EitherAppFailureOr<Weather> fetchWeatherResponse(String cityName);
+  EitherAppFailureOr<Weather> fetchCurrentLocationWeather(List<double> current);
 }

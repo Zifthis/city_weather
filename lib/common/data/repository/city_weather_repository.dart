@@ -47,4 +47,19 @@ class WeatherRepositoryProvider implements ICityWeatherRepository {
       return Left(Failure.serverError.toAppFailure);
     }
   }
+
+  @override
+  EitherAppFailureOr<Weather> fetchCurrentLocationWeather(
+      List<double> current) async {
+    try {
+      final response = await _apiClient.getCurrentLocationTemperature(current);
+      return Right(response.toDomain());
+    } on DioError catch (error) {
+      final err = error;
+      err.response?.statusCode;
+      return Left(AppFailure.fromDioErrorResponse(err));
+    } catch (err) {
+      return Left(Failure.serverError.toAppFailure);
+    }
+  }
 }

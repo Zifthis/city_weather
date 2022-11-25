@@ -1,21 +1,20 @@
-import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
+import 'package:city_weather/feature/geolocator/domain/notifier/current_location_notifier.dart';
 import 'package:city_weather/feature/weather/presentation/widget/weather_display.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WeatherScreen extends ConsumerWidget {
-  const WeatherScreen({super.key});
+class CurrentLocationScreen extends ConsumerWidget {
+  const CurrentLocationScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(weatherNotifierProvider);
-
+    final coordinateState = ref.watch(currentLocationWeatherNotifierProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.city_weather),
       ),
-      body: state.maybeWhen(
+      body: coordinateState.maybeWhen(
           orElse: () => _buildPlaceholderWidget(context),
           loaded: (value) => WeatherDisplay(
               location: value.location?.name ?? '',

@@ -38,7 +38,7 @@ class _LocationListState extends ConsumerState<LocationList> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height / 1.5,
+              height: MediaQuery.of(context).size.height / 2,
               child: RawScrollbar(
                 thumbColor: Colors.blueGrey,
                 radius: const Radius.circular(20),

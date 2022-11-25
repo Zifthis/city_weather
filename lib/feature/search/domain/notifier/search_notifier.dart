@@ -1,25 +1,25 @@
-import 'package:city_weather/feature/search/data/repository/i_search_repository.dart';
-import 'package:city_weather/feature/search/data/repository/search_repository.dart';
+import 'package:city_weather/common/data/repository/city_weather_repository.dart';
+import 'package:city_weather/common/data/repository/i_city_weather_repository.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final searchNotifierProvider =
     StateNotifierProvider<SearchNotifier, SearchState>(
   (ref) => SearchNotifier(
-    ref.read(searchRepositoryProvider),
+    ref.read(cityWeatherRepositoryProvider),
   ),
 );
 
 class SearchNotifier extends StateNotifier<SearchState> {
-  final ISearchRepository _iSearchRepository;
+  final ICityWeatherRepository _repository;
 
   SearchNotifier(
-    this._iSearchRepository,
+    this._repository,
   ) : super(const SearchState.initial());
 
   Future<void> getSearchResult(String search) async {
     state = const SearchState.loading();
-    final response = await _iSearchRepository.fetchSearchResponse(search);
+    final response = await _repository.fetchSearchResponse(search);
 
     state = await response.fold(
       (error) => SearchState.error(error),

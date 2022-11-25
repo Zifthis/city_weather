@@ -4,7 +4,10 @@
       "source.fixAll": true
     },
     "cSpell.words": [
-      "consts"
+      "consts",
+      "feelslike",
+      "localtime",
+      "Prefs"
     ],
    
 }

@@ -1,3 +1,4 @@
+import 'package:city_weather/common/data/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,17 +21,28 @@ class DropDownList extends ConsumerWidget {
       itemCount: searchResult.length,
       itemBuilder: (context, index) {
         return InkWell(
-          onTap: () {
+          onTap: () async {
             SnackBar snackBar = SnackBar(
               content: Text(
                 '${searchResult[index].name} is already in the list!',
                 textAlign: TextAlign.center,
               ),
             );
-            userLocationList.any((element) =>
+
+            if (userLocationList.any((element) =>
+                element.contains(searchResult[index].name ?? ''))) {
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              userLocationList.add(searchResult[index].name.toString());
+              ref
+                  .read(localStorageProvider)
+                  .setStringList(userLocationList as List<String>);
+            }
+
+            /* userLocationList.any((element) =>
                     element.contains(searchResult[index].name ?? ''))
                 ? ScaffoldMessenger.of(context).showSnackBar(snackBar)
-                : userLocationList.add(searchResult[index].name.toString());
+                : userLocationList.add(searchResult[index].name.toString());*/
           },
           child: CardList(title: searchResult[index].name ?? ''),
         );

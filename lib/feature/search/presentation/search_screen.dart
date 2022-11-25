@@ -1,3 +1,4 @@
+import 'package:city_weather/common/data/local_storage.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_list_provider.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
 import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
@@ -15,6 +16,23 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final myController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    init();
+  }
+
+  Future init() async {
+    final prefs = await ref.read(localStorageProvider).getStringList();
+    if (prefs.isEmpty) {
+      return;
+    } else {
+      setState(() {
+        ref.read(searchListProvider.notifier).state.addAll(prefs.toList());
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,10 +103,21 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   ],
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () async {
+                    final stringList =
+                        await ref.read(localStorageProvider).getStringList();
+                    print(stringList);
+                  },
+                  child: const Text('data')),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void getSavedList() async {
+    await ref.read(localStorageProvider).getStringList();
   }
 }

@@ -1,19 +1,34 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final localStorageProvider = Provider<LocalStorage>(
-  (_) => LocalStorage(),
+final localStorageProvider = Provider<StorageImp>(
+  (_) => StorageImp(SharedPreferences.getInstance()),
 );
 
-class LocalStorage {
-  void storeStringList(List<String> list) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList(listKey, list);
+abstract class LocalStorage {
+  Future<bool> setStringList(List<String> list);
+  Future<List<String>> getStringList();
+}
+
+class StorageImp implements LocalStorage {
+  final Future<SharedPreferences> _futureSharedPreferences;
+  SharedPreferences? _sharedPreferencesInstance;
+
+  StorageImp(this._futureSharedPreferences);
+
+  Future<SharedPreferences> get _sharedPreferences async {
+    _sharedPreferencesInstance ??= await _futureSharedPreferences;
+    return _sharedPreferencesInstance!;
   }
 
-  Future<List<String>?> getStringList() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(listKey);
+  @override
+  Future<List<String>> getStringList() async {
+    return (await _sharedPreferences).getStringList(listKey) ?? [];
+  }
+
+  @override
+  Future<bool> setStringList(List<String> value) async {
+    return (await _sharedPreferences).setStringList(listKey, value);
   }
 }
 

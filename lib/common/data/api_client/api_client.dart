@@ -18,4 +18,9 @@ abstract class ApiClient {
   Future<List<SearchResponse>> getSearchResults(
     @Query('q') String search,
   );
+
+  @GET("/current.json")
+  Future<WeatherResponse> getCurrentLocationTemperature(
+    @Query('q') List<double> current,
+  );
 }

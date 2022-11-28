@@ -51,6 +51,7 @@ class _LocationListState extends ConsumerState<LocationList> {
                       motion: const ScrollMotion(),
                       children: [
                         SlidableAction(
+                          borderRadius: BorderRadius.circular(10),
                           onPressed: (context) {
                             _onSwipe(index, context);
                           },

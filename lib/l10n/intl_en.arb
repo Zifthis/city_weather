@@ -8,5 +8,6 @@
     "server_error": "Server Error",
     "server_error_description": "Something went wrong!",
     "dio_error": "Dio Error",
-    "already_in_list": "is already in the list!"
+    "already_in_list": "is already in the list!",
+    "delete": "Delete"
 }

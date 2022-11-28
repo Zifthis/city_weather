@@ -18,7 +18,7 @@ class DropDownList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView.builder(
       shrinkWrap: true,
-      padding: EdgeInsets.zero,
+      padding: const EdgeInsets.symmetric(horizontal: 60),
       itemCount: searchResult.length,
       itemBuilder: (context, index) {
         return InkWell(

@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "already_in_list":
             MessageLookupByLibrary.simpleMessage("is already in the list!"),
         "city_weather": MessageLookupByLibrary.simpleMessage("City Weather"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "dio_error": MessageLookupByLibrary.simpleMessage("Dio Error"),
         "error_search": MessageLookupByLibrary.simpleMessage(
             "Search and add your locations to the list"),

@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:city_weather/common/data/local_storage.dart';
-import 'package:city_weather/feature/search/presentation/widget/card_list.dart';
 import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class LocationList extends ConsumerStatefulWidget {
   final List locationList;
@@ -26,7 +26,7 @@ class _LocationListState extends ConsumerState<LocationList> {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               S.current.location_list,
               style: const TextStyle(
@@ -35,28 +35,43 @@ class _LocationListState extends ConsumerState<LocationList> {
                   color: Colors.black),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height / 2,
-              child: RawScrollbar(
-                thumbColor: Colors.blueGrey,
-                radius: const Radius.circular(20),
-                thickness: 5,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  itemCount: widget.locationList.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
+          SizedBox(
+            height: MediaQuery.of(context).size.height / 2,
+            child: RawScrollbar(
+              thumbColor: Colors.blueGrey,
+              radius: const Radius.circular(20),
+              thickness: 4,
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                itemCount: widget.locationList.length,
+                itemBuilder: (context, index) {
+                  return Slidable(
+                    endActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      children: [
+                        SlidableAction(
+                          onPressed: (context) {
+                            _onSwipe(index, context);
+                          },
+                          backgroundColor: const Color(0xFFFE4A49),
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: S.current.delete,
+                        ),
+                      ],
+                    ),
+                    child: ListTile(
                       onTap: () => _onTap(index),
-                      onLongPress: () => _onLongPress(index),
-                      child: CardList(
-                        title: widget.locationList[index].toString(),
+                      title: Text(
+                        widget.locationList[index].toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 18),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -65,14 +80,7 @@ class _LocationListState extends ConsumerState<LocationList> {
     );
   }
 
-  void _onTap(int index) {
-    ref
-        .read(weatherNotifierProvider.notifier)
-        .getCityWeather(widget.locationList[index]);
-    context.router.pushNamed(const WeatherScreen().path);
-  }
-
-  void _onLongPress(int index) {
+  void _onSwipe(int index, BuildContext context) {
     setState(() {
       SnackBar snackBar = SnackBar(
         content: Text(
@@ -86,5 +94,12 @@ class _LocationListState extends ConsumerState<LocationList> {
           .setStringList(widget.locationList as List<String>);
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     });
+  }
+
+  void _onTap(int index) {
+    ref
+        .read(weatherNotifierProvider.notifier)
+        .getCityWeather(widget.locationList[index]);
+    context.router.pushNamed(const WeatherScreen().path);
   }
 }

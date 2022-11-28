@@ -81,29 +81,29 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 60.0, vertical: 38),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    TextFieldInput(myController: myController, ref: ref),
-                    Stack(
-                      children: [
-                        ListWidget(userLocationList: userLocationList),
-                        searchState.maybeWhen(
-                          orElse: () => const SizedBox(),
-                          loading: () => const Center(
-                              child: CircularProgressIndicator.adaptive()),
-                          loaded: (searchResult) => DropDownList(
-                            searchResult: searchResult,
-                            userLocationList: userLocationList,
-                          ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 38),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 60),
+                    child: TextFieldInput(myController: myController, ref: ref),
+                  ),
+                  Stack(
+                    children: [
+                      ListWidget(userLocationList: userLocationList),
+                      searchState.maybeWhen(
+                        orElse: () => const SizedBox(),
+                        loading: () => const Center(
+                            child: CircularProgressIndicator.adaptive()),
+                        loaded: (searchResult) => DropDownList(
+                          searchResult: searchResult,
+                          userLocationList: userLocationList,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

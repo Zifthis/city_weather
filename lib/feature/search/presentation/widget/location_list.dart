@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:city_weather/common/data/local_storage.dart';
 import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
+import 'package:city_weather/feature/weather/presentation/weather_screen.dart';
 import 'package:city_weather/generated/l10n.dart';
-import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -109,6 +108,10 @@ class _LocationListState extends ConsumerState<LocationList> {
     ref
         .read(weatherNotifierProvider.notifier)
         .getCityWeather(widget.locationList[index]);
-    context.router.pushNamed(const WeatherScreen().path);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const WeatherScreen()),
+    );
+    //context.router.pushNamed(const WeatherRoute().path);
   }
 }

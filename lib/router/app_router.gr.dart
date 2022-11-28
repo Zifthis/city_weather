@@ -24,19 +24,19 @@ class AppRouter extends _i4.RootStackRouter {
 
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
-    SearchScreen.name: (routeData) {
+    SearchRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.SearchScreen(),
       );
     },
-    WeatherScreen.name: (routeData) {
+    WeatherRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.WeatherScreen(),
       );
     },
-    CurrentLocationScreen.name: (routeData) {
+    CurrentLocationRoute.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.CurrentLocationScreen(),
@@ -47,15 +47,15 @@ class AppRouter extends _i4.RootStackRouter {
   @override
   List<_i4.RouteConfig> get routes => [
         _i4.RouteConfig(
-          SearchScreen.name,
+          SearchRoute.name,
           path: '/',
         ),
         _i4.RouteConfig(
-          WeatherScreen.name,
+          WeatherRoute.name,
           path: '/weather_screen',
         ),
         _i4.RouteConfig(
-          CurrentLocationScreen.name,
+          CurrentLocationRoute.name,
           path: '/current_location_screen',
         ),
       ];
@@ -63,36 +63,36 @@ class AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.SearchScreen]
-class SearchScreen extends _i4.PageRouteInfo<void> {
-  const SearchScreen()
+class SearchRoute extends _i4.PageRouteInfo<void> {
+  const SearchRoute()
       : super(
-          SearchScreen.name,
+          SearchRoute.name,
           path: '/',
         );
 
-  static const String name = 'SearchScreen';
+  static const String name = 'SearchRoute';
 }
 
 /// generated route for
 /// [_i2.WeatherScreen]
-class WeatherScreen extends _i4.PageRouteInfo<void> {
-  const WeatherScreen()
+class WeatherRoute extends _i4.PageRouteInfo<void> {
+  const WeatherRoute()
       : super(
-          WeatherScreen.name,
+          WeatherRoute.name,
           path: '/weather_screen',
         );
 
-  static const String name = 'WeatherScreen';
+  static const String name = 'WeatherRoute';
 }
 
 /// generated route for
 /// [_i3.CurrentLocationScreen]
-class CurrentLocationScreen extends _i4.PageRouteInfo<void> {
-  const CurrentLocationScreen()
+class CurrentLocationRoute extends _i4.PageRouteInfo<void> {
+  const CurrentLocationRoute()
       : super(
-          CurrentLocationScreen.name,
+          CurrentLocationRoute.name,
           path: '/current_location_screen',
         );
 
-  static const String name = 'CurrentLocationScreen';
+  static const String name = 'CurrentLocationRoute';
 }

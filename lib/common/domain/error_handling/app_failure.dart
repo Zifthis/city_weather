@@ -8,7 +8,7 @@ class AppFailure implements Exception {
 
   AppFailure({
     required this.title,
-    this.description = " ",
+    this.description,
   });
 
   factory AppFailure.fromFailure(Failure failure) {

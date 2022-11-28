@@ -61,13 +61,20 @@ class _LocationListState extends ConsumerState<LocationList> {
                         ),
                       ],
                     ),
-                    child: ListTile(
-                      onTap: () => _onTap(index),
-                      title: Text(
-                        widget.locationList[index].toString(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 18),
+                    child: Container(
+                      margin: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.black12,
+                      ),
+                      child: ListTile(
+                        onTap: () => _onTap(index),
+                        title: Text(
+                          widget.locationList[index].toString(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 18),
+                        ),
                       ),
                     ),
                   );

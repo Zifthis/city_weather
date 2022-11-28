@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:city_weather/common/data/local_storage.dart';
+import 'package:city_weather/common/network/network_notifier.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location.provider.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location_notifier.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_list_provider.dart';
@@ -9,6 +10,7 @@ import 'package:city_weather/feature/search/presentation/widget/list_widget.dart
 import 'package:city_weather/feature/search/presentation/widget/text_field_input.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:city_weather/router/app_router.gr.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -49,6 +51,21 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     final userLocationList = ref.watch(searchListProvider);
     final searchState = ref.watch(searchNotifierProvider);
+
+    ref.listen<ConnectivityResult?>(
+      connectivityProvider,
+      (previous, current) {
+        if (current == ConnectivityResult.none && previous != null) {
+          SnackBar snackBar = SnackBar(
+            content: Text(
+              S.current.no_internet,
+              textAlign: TextAlign.center,
+            ),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+      },
+    );
 
     return Scaffold(
       appBar: AppBar(

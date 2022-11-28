@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Search and add your locations to the list"),
         "location_list":
             MessageLookupByLibrary.simpleMessage("Saved Locations"),
+        "no_internet": MessageLookupByLibrary.simpleMessage(
+            "Check your internet connection!"),
         "search_city": MessageLookupByLibrary.simpleMessage("Search City"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "server_error_description":

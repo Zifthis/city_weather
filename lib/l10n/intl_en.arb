@@ -9,5 +9,6 @@
     "server_error_description": "Something went wrong!",
     "dio_error": "Dio Error",
     "already_in_list": "is already in the list!",
-    "delete": "Delete"
+    "delete": "Delete",
+    "no_internet": "Check your internet connection!"
 }

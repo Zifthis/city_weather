@@ -70,6 +70,7 @@ class _LocationListState extends ConsumerState<LocationList> {
                       ),
                       child: ListTile(
                         onTap: () => _onTap(index),
+                        trailing: const Icon((Icons.more_vert_rounded)),
                         title: Text(
                           widget.locationList[index].toString(),
                           textAlign: TextAlign.center,

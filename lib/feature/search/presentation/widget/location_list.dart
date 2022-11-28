@@ -55,7 +55,7 @@ class _LocationListState extends ConsumerState<LocationList> {
                           onPressed: (context) {
                             _onSwipe(index, context);
                           },
-                          backgroundColor: const Color(0xFFFE4A49),
+                          backgroundColor: Colors.grey,
                           foregroundColor: Colors.white,
                           icon: Icons.delete,
                           label: S.current.delete,

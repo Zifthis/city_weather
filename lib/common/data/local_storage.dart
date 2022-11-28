@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final localStorageProvider = Provider<StorageImp>(
+final localStorageProvider = Provider<LocalStorage>(
   (_) => StorageImp(SharedPreferences.getInstance()),
 );
 

@@ -1,6 +1,8 @@
 import 'package:city_weather/common/storage/model/city_model.dart';
+import 'package:city_weather/firebase_options.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:city_weather/router/app_router.gr.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,6 +12,9 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(CityModelAdapter());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ProviderScope(
       child: MyApp(),

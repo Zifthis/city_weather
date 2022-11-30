@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "520404969986",
+    "project_id": "cityweather-d3e01",
+    "storage_bucket": "cityweather-d3e01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520404969986:android:5aea1daf30b9723fb3951b",
+        "android_client_info": {
+          "package_name": "com.example.city_weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520404969986-bjuum64m59qu1grpi94ert4as7nr3hka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Tu4rWcBr5hmahvP16QX9dyhf67SxD7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520404969986-bjuum64m59qu1grpi94ert4as7nr3hka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

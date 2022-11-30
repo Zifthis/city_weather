@@ -30,6 +30,11 @@ class CityListNotifier extends StateNotifier<CityListState> {
         : CityListState.error(S.current.list_empty);
   }
 
+  Future<Box> getBox() async {
+    Box box = await _cityLocalStorage.openBox();
+    return box;
+  }
+
   Future<void> addCity(CityModel cityName) async {
     Box box = await _cityLocalStorage.openBox();
     final newItem = _cityLocalStorage.addCityToList(box, cityName);
@@ -46,5 +51,6 @@ class CityListNotifier extends StateNotifier<CityListState> {
     Box box = await _cityLocalStorage.openBox();
     final newItem = _cityLocalStorage.clearCityList(box);
     state = CityListState.loaded(newItem as List<CityModel>);
+    box.close();
   }
 }

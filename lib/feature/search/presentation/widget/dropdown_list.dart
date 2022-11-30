@@ -30,7 +30,7 @@ class DropDownList extends ConsumerWidget {
     );
   }
 
-  void _onTap(int index, BuildContext context, WidgetRef ref) async {
+  void _onTap(int index, BuildContext context, WidgetRef ref) {
     {
       SnackBar snackBar = SnackBar(
         content: Text(

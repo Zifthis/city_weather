@@ -1,12 +1,10 @@
-import 'package:city_weather/common/data/local_storage.dart';
 import 'package:city_weather/common/network/network_notifier.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location.provider.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location_notifier.dart';
 import 'package:city_weather/feature/geolocator/presentation/current_location_screen.dart';
-import 'package:city_weather/feature/search/domain/notifier/search_list_provider.dart';
 import 'package:city_weather/feature/search/domain/notifier/search_notifier.dart';
 import 'package:city_weather/feature/search/presentation/widget/dropdown_list.dart';
-import 'package:city_weather/feature/search/presentation/widget/list_widget.dart';
+import 'package:city_weather/feature/search/presentation/widget/location_list.dart';
 import 'package:city_weather/feature/search/presentation/widget/text_field_input.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -24,23 +22,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   final myController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future init() async {
-    final prefs = await ref.read(localStorageProvider).getStringList();
-    if (prefs.isEmpty) {
-      return;
-    } else {
-      setState(() {
-        ref.read(searchListProvider.notifier).state.addAll(prefs.toList());
-      });
-    }
-  }
-
-  @override
   void dispose() {
     myController.dispose();
     super.dispose();
@@ -48,7 +29,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final userLocationList = ref.watch(searchListProvider);
     final searchState = ref.watch(searchNotifierProvider);
 
     ref.listen<ConnectivityResult?>(
@@ -107,14 +87,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   ),
                   Stack(
                     children: [
-                      ListWidget(userLocationList: userLocationList),
+                      const CityLocationList(),
                       searchState.maybeWhen(
                         orElse: () => const SizedBox(),
                         loading: () => const Center(
                             child: CircularProgressIndicator.adaptive()),
                         loaded: (searchResult) => DropDownList(
                           searchResult: searchResult,
-                          userLocationList: userLocationList,
                         ),
                       ),
                     ],
@@ -140,6 +119,5 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         builder: (context) => const CurrentLocationScreen(),
       ),
     );
-    //context.router.pushNamed(const CurrentLocationRoute().path);
   }
 }

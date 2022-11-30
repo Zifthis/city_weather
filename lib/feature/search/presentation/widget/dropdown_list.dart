@@ -1,17 +1,17 @@
-import 'package:city_weather/common/data/local_storage.dart';
-import 'package:city_weather/generated/l10n.dart';
+import 'package:city_weather/common/storage/model/city_model.dart';
+import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
+import 'package:city_weather/feature/search/domain/entities/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'card_list.dart';
 
 class DropDownList extends ConsumerWidget {
-  final List searchResult;
-  final List userLocationList;
+  final List<Search> searchResult;
+
   const DropDownList({
     super.key,
     required this.searchResult,
-    required this.userLocationList,
   });
 
   @override
@@ -33,20 +33,16 @@ class DropDownList extends ConsumerWidget {
     {
       SnackBar snackBar = SnackBar(
         content: Text(
-          '${searchResult[index].name} ${S.current.already_in_list}',
+          '${searchResult[index].name} added the list!',
           textAlign: TextAlign.center,
         ),
       );
-
-      if (userLocationList
-          .any((element) => element.contains(searchResult[index].name ?? ''))) {
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      } else {
-        userLocationList.add(searchResult[index].name.toString());
-        ref
-            .read(localStorageProvider)
-            .setStringList(userLocationList as List<String>);
-      }
+      final cityModel = CityModel();
+      ref
+          .read(cityListNotifierProvider.notifier)
+          .addCity(cityModel..cityName = searchResult[index].name ?? '');
+      ref.read(cityListNotifierProvider.notifier).getCityList();
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }

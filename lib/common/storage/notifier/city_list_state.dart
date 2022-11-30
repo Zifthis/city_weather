@@ -1,4 +1,3 @@
-import 'package:city_weather/common/domain/error_handling/app_failure.dart';
 import 'package:city_weather/common/storage/model/city_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

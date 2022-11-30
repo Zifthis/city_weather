@@ -179,6 +179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `List is empty!`
+  String get list_empty {
+    return Intl.message(
+      'List is empty!',
+      name: 'list_empty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dio_error": MessageLookupByLibrary.simpleMessage("Dio Error"),
         "error_search": MessageLookupByLibrary.simpleMessage(
             "Search and add your locations to the list"),
+        "list_empty": MessageLookupByLibrary.simpleMessage("List is empty!"),
         "location_list":
             MessageLookupByLibrary.simpleMessage("Saved Locations"),
         "no_internet": MessageLookupByLibrary.simpleMessage(

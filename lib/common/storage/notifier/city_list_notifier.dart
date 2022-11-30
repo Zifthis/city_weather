@@ -2,6 +2,7 @@ import 'package:city_weather/common/storage/model/city_model.dart';
 import 'package:city_weather/common/storage/notifier/city_list_state.dart';
 import 'package:city_weather/common/storage/repository/city_local_storage.dart';
 import 'package:city_weather/common/storage/repository/i_city_local_storage.dart';
+import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -26,7 +27,7 @@ class CityListNotifier extends StateNotifier<CityListState> {
     List<CityModel> cityModelList = _cityLocalStorage.getCityList(box);
     state = cityModelList.isNotEmpty
         ? CityListState.loaded(cityModelList)
-        : const CityListState.error('List is empty');
+        : CityListState.error(S.current.list_empty);
   }
 
   Future<void> addCity(CityModel cityName) async {

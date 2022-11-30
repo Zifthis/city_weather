@@ -12,5 +12,6 @@
     "delete": "Delete",
     "no_internet": "Check your internet connection!",
     "added_to": "added the list!",
-    "removed_from": "removed from the list!"
+    "removed_from": "removed from the list!",
+    "list_empty": "List is empty!"
 }

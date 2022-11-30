@@ -1,4 +1,4 @@
-import 'package:city_weather/feature/search/domain/entities/search.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part "search_response.g.dart";
@@ -25,7 +25,7 @@ class SearchResponse {
       _$SearchResponseFromJson(json);
   Map<String, dynamic> toJson() => _$SearchResponseToJson(this);
 
-  Search toDomain() => Search(
+  Location toDomain() => Location(
         country: country,
         id: id,
         lat: lat,

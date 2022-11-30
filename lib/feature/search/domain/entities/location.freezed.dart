@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'search.dart';
+part of 'location.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Search {
+mixin _$Location {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get region => throw _privateConstructorUsedError;
@@ -24,13 +24,14 @@ mixin _$Search {
   double? get lon => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchCopyWith<Search> get copyWith => throw _privateConstructorUsedError;
+  $LocationCopyWith<Location> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SearchCopyWith<$Res> {
-  factory $SearchCopyWith(Search value, $Res Function(Search) then) =
-      _$SearchCopyWithImpl<$Res, Search>;
+abstract class $LocationCopyWith<$Res> {
+  factory $LocationCopyWith(Location value, $Res Function(Location) then) =
+      _$LocationCopyWithImpl<$Res, Location>;
   @useResult
   $Res call(
       {int? id,
@@ -42,9 +43,9 @@ abstract class $SearchCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchCopyWithImpl<$Res, $Val extends Search>
-    implements $SearchCopyWith<$Res> {
-  _$SearchCopyWithImpl(this._value, this._then);
+class _$LocationCopyWithImpl<$Res, $Val extends Location>
+    implements $LocationCopyWith<$Res> {
+  _$LocationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,9 +92,10 @@ class _$SearchCopyWithImpl<$Res, $Val extends Search>
 }
 
 /// @nodoc
-abstract class _$$_SearchCopyWith<$Res> implements $SearchCopyWith<$Res> {
-  factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
-      __$$_SearchCopyWithImpl<$Res>;
+abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
+  factory _$$_LocationCopyWith(
+          _$_Location value, $Res Function(_$_Location) then) =
+      __$$_LocationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -106,10 +108,11 @@ abstract class _$$_SearchCopyWith<$Res> implements $SearchCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SearchCopyWithImpl<$Res>
-    extends _$SearchCopyWithImpl<$Res, _$_Search>
-    implements _$$_SearchCopyWith<$Res> {
-  __$$_SearchCopyWithImpl(_$_Search _value, $Res Function(_$_Search) _then)
+class __$$_LocationCopyWithImpl<$Res>
+    extends _$LocationCopyWithImpl<$Res, _$_Location>
+    implements _$$_LocationCopyWith<$Res> {
+  __$$_LocationCopyWithImpl(
+      _$_Location _value, $Res Function(_$_Location) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +125,7 @@ class __$$_SearchCopyWithImpl<$Res>
     Object? lat = freezed,
     Object? lon = freezed,
   }) {
-    return _then(_$_Search(
+    return _then(_$_Location(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -153,8 +156,8 @@ class __$$_SearchCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Search implements _Search {
-  const _$_Search(
+class _$_Location implements _Location {
+  const _$_Location(
       {this.id, this.name, this.region, this.country, this.lat, this.lon});
 
   @override
@@ -172,14 +175,14 @@ class _$_Search implements _Search {
 
   @override
   String toString() {
-    return 'Search(id: $id, name: $name, region: $region, country: $country, lat: $lat, lon: $lon)';
+    return 'Location(id: $id, name: $name, region: $region, country: $country, lat: $lat, lon: $lon)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Search &&
+            other is _$_Location &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.region, region) || other.region == region) &&
@@ -195,18 +198,18 @@ class _$_Search implements _Search {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchCopyWith<_$_Search> get copyWith =>
-      __$$_SearchCopyWithImpl<_$_Search>(this, _$identity);
+  _$$_LocationCopyWith<_$_Location> get copyWith =>
+      __$$_LocationCopyWithImpl<_$_Location>(this, _$identity);
 }
 
-abstract class _Search implements Search {
-  const factory _Search(
+abstract class _Location implements Location {
+  const factory _Location(
       {final int? id,
       final String? name,
       final String? region,
       final String? country,
       final double? lat,
-      final double? lon}) = _$_Search;
+      final double? lon}) = _$_Location;
 
   @override
   int? get id;
@@ -222,6 +225,6 @@ abstract class _Search implements Search {
   double? get lon;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchCopyWith<_$_Search> get copyWith =>
+  _$$_LocationCopyWith<_$_Location> get copyWith =>
       throw _privateConstructorUsedError;
 }

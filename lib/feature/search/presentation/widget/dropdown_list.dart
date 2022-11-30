@@ -1,14 +1,14 @@
 import 'package:city_weather/common/storage/model/city_model.dart';
 import 'package:city_weather/common/storage/notifier/box_provider.dart';
 import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
-import 'package:city_weather/feature/search/domain/entities/search.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'card_list.dart';
 
 class DropDownList extends ConsumerWidget {
-  final List<Search> searchResult;
+  final List<Location> searchResult;
 
   const DropDownList({
     super.key,

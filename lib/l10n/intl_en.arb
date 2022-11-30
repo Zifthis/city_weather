@@ -10,5 +10,7 @@
     "dio_error": "Dio Error",
     "already_in_list": "is already in the list!",
     "delete": "Delete",
-    "no_internet": "Check your internet connection!"
+    "no_internet": "Check your internet connection!",
+    "added_to": "added the list!",
+    "removed_from": "removed from the list!"
 }

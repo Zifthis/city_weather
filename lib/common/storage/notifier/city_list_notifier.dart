@@ -21,10 +21,6 @@ class CityListNotifier extends StateNotifier<CityListState> {
     getCityList();
   }
 
-  Future<void> setInitSearch() async {
-    state = const CityListState.initial();
-  }
-
   Future<void> getCityList() async {
     Box box = await _cityLocalStorage.openBox();
     List<CityModel> cityModelList = _cityLocalStorage.getCityList(box);
@@ -42,6 +38,12 @@ class CityListNotifier extends StateNotifier<CityListState> {
   Future<void> deleteCity(CityModel cityName, int index) async {
     Box box = await _cityLocalStorage.openBox();
     final newItem = _cityLocalStorage.removeCityFromList(box, index);
+    state = CityListState.loaded(newItem as List<CityModel>);
+  }
+
+  Future<void> deleteAllCities() async {
+    Box box = await _cityLocalStorage.openBox();
+    final newItem = _cityLocalStorage.clearCityList(box);
     state = CityListState.loaded(newItem as List<CityModel>);
   }
 }

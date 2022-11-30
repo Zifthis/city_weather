@@ -1,4 +1,5 @@
 import 'package:city_weather/common/network/network_notifier.dart';
+import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location.provider.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location_notifier.dart';
 import 'package:city_weather/feature/geolocator/presentation/current_location_screen.dart';
@@ -48,11 +49,17 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.current.city_weather),
+        title: Text(
+          S.current.city_weather,
+        ),
         actions: [
           SizedBox(
-            height: 50,
-            width: 50,
+            child: IconButton(
+              icon: const Icon(Icons.delete_sweep_sharp),
+              onPressed: () => _clearList(),
+            ),
+          ),
+          SizedBox(
             child: IconButton(
               icon: const Icon(Icons.gps_fixed_outlined),
               onPressed: () => _currentLocation(context),
@@ -105,6 +112,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ),
       ),
     );
+  }
+
+  void _clearList() {
+    ref.read(cityListNotifierProvider.notifier).deleteAllCities();
+    ref.read(cityListNotifierProvider.notifier).getCityList();
   }
 
   void _currentLocation(BuildContext context) async {

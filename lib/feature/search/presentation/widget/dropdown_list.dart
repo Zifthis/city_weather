@@ -1,6 +1,7 @@
 import 'package:city_weather/common/storage/model/city_model.dart';
 import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
 import 'package:city_weather/feature/search/domain/entities/search.dart';
+import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -33,7 +34,7 @@ class DropDownList extends ConsumerWidget {
     {
       SnackBar snackBar = SnackBar(
         content: Text(
-          '${searchResult[index].name} added the list!',
+          '${searchResult[index].name} ${S.current.added_to}',
           textAlign: TextAlign.center,
         ),
       );

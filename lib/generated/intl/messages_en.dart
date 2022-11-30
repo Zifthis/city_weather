@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "added_to": MessageLookupByLibrary.simpleMessage("added the list!"),
         "already_in_list":
             MessageLookupByLibrary.simpleMessage("is already in the list!"),
         "city_weather": MessageLookupByLibrary.simpleMessage("City Weather"),
@@ -33,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Saved Locations"),
         "no_internet": MessageLookupByLibrary.simpleMessage(
             "Check your internet connection!"),
+        "removed_from":
+            MessageLookupByLibrary.simpleMessage("removed from the list!"),
         "search_city": MessageLookupByLibrary.simpleMessage("Search City"),
         "server_error": MessageLookupByLibrary.simpleMessage("Server Error"),
         "server_error_description":

@@ -159,6 +159,26 @@ class S {
       args: [],
     );
   }
+
+  /// `added the list!`
+  String get added_to {
+    return Intl.message(
+      'added the list!',
+      name: 'added_to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `removed from the list!`
+  String get removed_from {
+    return Intl.message(
+      'removed from the list!',
+      name: 'removed_from',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

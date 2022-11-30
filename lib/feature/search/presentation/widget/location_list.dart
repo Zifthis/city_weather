@@ -112,7 +112,7 @@ class _ListOfCitiesState extends ConsumerState<ListOfCities> {
   void _onSwipe(int index, CityModel city) {
     SnackBar snackBar = SnackBar(
       content: Text(
-        '${widget.locationList[index].cityName.toString()} removed from the list!',
+        '${widget.locationList[index].cityName.toString()} ${S.current.removed_from}',
         textAlign: TextAlign.center,
       ),
     );

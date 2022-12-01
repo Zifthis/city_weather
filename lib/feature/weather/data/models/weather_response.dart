@@ -1,5 +1,5 @@
 import 'package:city_weather/feature/weather/domain/entities/current.dart';
-import 'package:city_weather/feature/weather/domain/entities/location.dart';
+import 'package:city_weather/feature/weather/domain/entities/weather_location.dart';
 import 'package:city_weather/feature/weather/domain/entities/weather.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -57,7 +57,7 @@ class LocationResponse {
       _$LocationResponseFromJson(json);
   Map<String, dynamic> toJson() => _$LocationResponseToJson(this);
 
-  Location toDomain() => Location(
+  WeatherLocation toDomain() => WeatherLocation(
         localtime: localtime,
         name: name,
       );

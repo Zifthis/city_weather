@@ -24,7 +24,7 @@ class WeatherRepositoryProvider implements ICityWeatherRepository {
   EitherAppFailureOr<List<Location>> fetchSearchResponse(String search) async {
     try {
       final response = await _apiClient.getSearchResults(search);
-      return Right(response.map((e) => e.toDomain()).toList());
+      return Right(response);
     } on DioError catch (error) {
       final err = error;
       err.response?.statusCode;

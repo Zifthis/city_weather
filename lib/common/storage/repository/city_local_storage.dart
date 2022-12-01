@@ -1,5 +1,6 @@
-import 'package:city_weather/common/storage/model/city_model.dart';
+import 'package:city_weather/common/const.dart';
 import 'package:city_weather/common/storage/repository/i_city_local_storage.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
@@ -8,22 +9,20 @@ final localStorageRepositoryProvider = Provider<ICityLocalStorage>(
 );
 
 class CityLocalStorage extends ICityLocalStorage {
-  String boxLabel = 'cityKey';
-
   @override
   Future<Box> openBox() async {
-    final box = await Hive.openBox(boxLabel);
+    final box = await Hive.openBox(Const.boxLabel);
     return box;
   }
 
   @override
-  List<CityModel> getCityList(Box box) {
-    return box.values.toList().cast<CityModel>();
+  List<Location> getCityList(Box box) {
+    return box.values.toList().cast<Location>();
   }
 
   @override
-  Future<void> addCityToList(Box box, CityModel cityModel) async {
-    await box.add(cityModel);
+  Future<void> addCityToList(Box box, Location location) async {
+    await box.add(location);
   }
 
   @override

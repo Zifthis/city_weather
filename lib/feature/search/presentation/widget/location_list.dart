@@ -1,5 +1,5 @@
-import 'package:city_weather/common/storage/model/city_model.dart';
 import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/feature/weather/domain/notifier/weather_notifier.dart';
 import 'package:city_weather/feature/weather/presentation/weather_screen.dart';
 import 'package:city_weather/generated/l10n.dart';
@@ -48,7 +48,7 @@ class CityLocationList extends ConsumerWidget {
 }
 
 class ListOfCities extends ConsumerStatefulWidget {
-  final List<CityModel> locationList;
+  final List<Location> locationList;
   const ListOfCities({
     super.key,
     required this.locationList,
@@ -96,7 +96,7 @@ class _ListOfCitiesState extends ConsumerState<ListOfCities> {
                 onTap: () => _onTap(index),
                 trailing: const Icon((Icons.more_vert_rounded)),
                 title: Text(
-                  widget.locationList[index].cityName.toString(),
+                  widget.locationList[index].name ?? '',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontWeight: FontWeight.w500, fontSize: 18),
@@ -109,10 +109,10 @@ class _ListOfCitiesState extends ConsumerState<ListOfCities> {
     );
   }
 
-  void _onSwipe(int index, CityModel city) {
+  void _onSwipe(int index, Location city) {
     SnackBar snackBar = SnackBar(
       content: Text(
-        '${widget.locationList[index].cityName.toString()} ${S.current.removed_from}',
+        '${widget.locationList[index].name.toString()} ${S.current.removed_from}',
         textAlign: TextAlign.center,
       ),
     );
@@ -124,7 +124,7 @@ class _ListOfCitiesState extends ConsumerState<ListOfCities> {
   void _onTap(int index) {
     ref
         .read(weatherNotifierProvider.notifier)
-        .getCityWeather(widget.locationList[index].cityName.toString());
+        .getCityWeather(widget.locationList[index].name.toString());
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const WeatherScreen()),

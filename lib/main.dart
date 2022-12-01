@@ -1,4 +1,4 @@
-import 'package:city_weather/common/storage/model/city_model.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:city_weather/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(CityModelAdapter());
+  Hive.registerAdapter(LocationAdapter());
   runApp(
     ProviderScope(
       child: MyApp(),

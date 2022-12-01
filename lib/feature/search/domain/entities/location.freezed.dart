@@ -14,15 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Location _$LocationFromJson(Map<String, dynamic> json) {
+  return _Location.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Location {
+  @HiveField(0)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get region => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get country => throw _privateConstructorUsedError;
+  @HiveField(4)
   double? get lat => throw _privateConstructorUsedError;
+  @HiveField(5)
   double? get lon => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LocationCopyWith<Location> get copyWith =>
       throw _privateConstructorUsedError;
@@ -34,12 +45,12 @@ abstract class $LocationCopyWith<$Res> {
       _$LocationCopyWithImpl<$Res, Location>;
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? region,
-      String? country,
-      double? lat,
-      double? lon});
+      {@HiveField(0) int? id,
+      @HiveField(1) String? name,
+      @HiveField(2) String? region,
+      @HiveField(3) String? country,
+      @HiveField(4) double? lat,
+      @HiveField(5) double? lon});
 }
 
 /// @nodoc
@@ -99,12 +110,12 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? name,
-      String? region,
-      String? country,
-      double? lat,
-      double? lon});
+      {@HiveField(0) int? id,
+      @HiveField(1) String? name,
+      @HiveField(2) String? region,
+      @HiveField(3) String? country,
+      @HiveField(4) double? lat,
+      @HiveField(5) double? lon});
 }
 
 /// @nodoc
@@ -155,22 +166,36 @@ class __$$_LocationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Location implements _Location {
   const _$_Location(
-      {this.id, this.name, this.region, this.country, this.lat, this.lon});
+      {@HiveField(0) this.id,
+      @HiveField(1) this.name,
+      @HiveField(2) this.region,
+      @HiveField(3) this.country,
+      @HiveField(4) this.lat,
+      @HiveField(5) this.lon});
+
+  factory _$_Location.fromJson(Map<String, dynamic> json) =>
+      _$$_LocationFromJson(json);
 
   @override
+  @HiveField(0)
   final int? id;
   @override
+  @HiveField(1)
   final String? name;
   @override
+  @HiveField(2)
   final String? region;
   @override
+  @HiveField(3)
   final String? country;
   @override
+  @HiveField(4)
   final double? lat;
   @override
+  @HiveField(5)
   final double? lon;
 
   @override
@@ -191,6 +216,7 @@ class _$_Location implements _Location {
             (identical(other.lon, lon) || other.lon == lon));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, region, country, lat, lon);
@@ -200,28 +226,43 @@ class _$_Location implements _Location {
   @pragma('vm:prefer-inline')
   _$$_LocationCopyWith<_$_Location> get copyWith =>
       __$$_LocationCopyWithImpl<_$_Location>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LocationToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Location implements Location {
   const factory _Location(
-      {final int? id,
-      final String? name,
-      final String? region,
-      final String? country,
-      final double? lat,
-      final double? lon}) = _$_Location;
+      {@HiveField(0) final int? id,
+      @HiveField(1) final String? name,
+      @HiveField(2) final String? region,
+      @HiveField(3) final String? country,
+      @HiveField(4) final double? lat,
+      @HiveField(5) final double? lon}) = _$_Location;
+
+  factory _Location.fromJson(Map<String, dynamic> json) = _$_Location.fromJson;
 
   @override
+  @HiveField(0)
   int? get id;
   @override
+  @HiveField(1)
   String? get name;
   @override
+  @HiveField(2)
   String? get region;
   @override
+  @HiveField(3)
   String? get country;
   @override
+  @HiveField(4)
   double? get lat;
   @override
+  @HiveField(5)
   double? get lon;
   @override
   @JsonKey(ignore: true)

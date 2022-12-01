@@ -1,4 +1,4 @@
-import 'package:city_weather/feature/search/data/models/search_response.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/feature/weather/data/models/weather_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -15,7 +15,7 @@ abstract class ApiClient {
   );
 
   @GET("/search.json")
-  Future<List<SearchResponse>> getSearchResults(
+  Future<List<Location>> getSearchResults(
     @Query('q') String search,
   );
 

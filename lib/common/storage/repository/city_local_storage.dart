@@ -10,28 +10,32 @@ final localStorageRepositoryProvider = Provider<ICityLocalStorage>(
 
 class CityLocalStorage extends ICityLocalStorage {
   @override
-  Future<Box> openBox() async {
-    final box = await Hive.openBox(Const.boxLabel);
+  Future<Box<Location>> openBox() async {
+    final box = await Hive.openBox<Location>(Const.boxLabel);
     return box;
   }
 
   @override
-  List<Location> getCityList(Box box) {
-    return box.values.toList().cast<Location>();
+  Future<List<Location>> getCityList() async {
+    final box = await openBox();
+    return box.values.toList();
   }
 
   @override
-  Future<void> addCityToList(Box box, Location location) async {
+  Future<void> addCityToList(Location location) async {
+    final box = await openBox();
     await box.add(location);
   }
 
   @override
-  Future<void> removeCityFromList(Box box, int index) async {
+  Future<void> removeCityFromList(int index) async {
+    final box = await openBox();
     await box.deleteAt(index);
   }
 
   @override
-  Future<void> clearCityList(Box box) async {
+  Future<void> clearCityList() async {
+    final box = await openBox();
     await box.clear();
   }
 }

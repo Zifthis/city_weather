@@ -23,10 +23,9 @@ class CityListNotifier extends StateNotifier<CityListState> {
   }
 
   Future<void> getCityList() async {
-    Box box = await _cityLocalStorage.openBox();
-    List<Location> cityModelList = _cityLocalStorage.getCityList(box);
-    state = cityModelList.isNotEmpty
-        ? CityListState.loaded(cityModelList)
+    List<Location> locationList = await _cityLocalStorage.getCityList();
+    state = locationList.isNotEmpty
+        ? CityListState.loaded(locationList)
         : CityListState.error(S.current.list_empty);
   }
 
@@ -36,21 +35,17 @@ class CityListNotifier extends StateNotifier<CityListState> {
   }
 
   Future<void> addCity(Location location) async {
-    Box box = await _cityLocalStorage.openBox();
-    final newItem = _cityLocalStorage.addCityToList(box, location);
-    state = CityListState.loaded(newItem as List<Location>);
+    await _cityLocalStorage.addCityToList(location);
+    getCityList();
   }
 
   Future<void> deleteCity(Location location, int index) async {
-    Box box = await _cityLocalStorage.openBox();
-    final newItem = _cityLocalStorage.removeCityFromList(box, index);
-    state = CityListState.loaded(newItem as List<Location>);
+    await _cityLocalStorage.removeCityFromList(index);
+    getCityList();
   }
 
   Future<void> deleteAllCities() async {
-    Box box = await _cityLocalStorage.openBox();
-    final newItem = _cityLocalStorage.clearCityList(box);
-    state = CityListState.loaded(newItem as List<Location>);
-    box.close();
+    await _cityLocalStorage.clearCityList();
+    getCityList();
   }
 }

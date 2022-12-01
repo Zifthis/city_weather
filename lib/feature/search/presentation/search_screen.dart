@@ -118,7 +118,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   void _clearList() {
     ref.read(cityListNotifierProvider.notifier).deleteAllCities();
-    ref.read(cityListNotifierProvider.notifier).getCityList();
   }
 
   void _currentLocation(BuildContext context) async {

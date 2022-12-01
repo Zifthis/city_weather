@@ -117,7 +117,6 @@ class _ListOfCitiesState extends ConsumerState<ListOfCities> {
       ),
     );
     ref.read(cityListNotifierProvider.notifier).deleteCity(city, index);
-    ref.read(cityListNotifierProvider.notifier).getCityList();
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 

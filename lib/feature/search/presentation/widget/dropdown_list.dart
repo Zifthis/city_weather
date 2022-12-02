@@ -1,6 +1,5 @@
-import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
 import 'package:city_weather/feature/search/domain/entities/location.dart';
-import 'package:city_weather/generated/l10n.dart';
+import 'package:city_weather/feature/search/domain/notifier/save_city_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'card_list.dart';
@@ -21,28 +20,12 @@ class DropDownList extends ConsumerWidget {
       itemCount: searchResult.length,
       itemBuilder: (context, index) {
         return InkWell(
-          onTap: () => _onTap(index, context, ref),
+          onTap: () async {
+            ref.read(saveCityProvider(searchResult[index]));
+          },
           child: CardList(title: searchResult[index].name ?? ''),
         );
       },
     );
-  }
-
-  void _onTap(int index, BuildContext context, WidgetRef ref) async {
-    final box = await ref.read(cityListNotifierProvider.notifier).getBox();
-    SnackBar snackBar = SnackBar(
-      content: Text(
-        '${searchResult[index].name} ${S.current.added_to}',
-        textAlign: TextAlign.center,
-      ),
-    );
-
-    if (box.values.cast<Location>().any(
-        (element) => element.name!.contains(searchResult[index].name ?? ''))) {
-    } else {
-      ref.read(cityListNotifierProvider.notifier).addCity(searchResult[index]);
-
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
   }
 }

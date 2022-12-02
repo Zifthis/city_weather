@@ -189,6 +189,226 @@ class S {
       args: [],
     );
   }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weather App, but simplified :)`
+  String get app_home_title {
+    return Intl.message(
+      'Weather App, but simplified :)',
+      name: 'app_home_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Profile`
+  String get show_profile {
+    return Intl.message(
+      'Show Profile',
+      name: 'show_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading Weather`
+  String get loading_weather {
+    return Intl.message(
+      'Loading Weather',
+      name: 'loading_weather',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City Name`
+  String get city_name {
+    return Intl.message(
+      'City Name',
+      name: 'city_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feels Like: `
+  String get feels_like {
+    return Intl.message(
+      'Feels Like: ',
+      name: 'feels_like',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Temperature: `
+  String get temperature {
+    return Intl.message(
+      'Temperature: ',
+      name: 'temperature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` °C`
+  String get temperature_symbol {
+    return Intl.message(
+      ' °C',
+      name: 'temperature_symbol',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong! `
+  String get something_went_wrong {
+    return Intl.message(
+      'Something went wrong! ',
+      name: 'something_went_wrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign In`
+  String get sign_in {
+    return Intl.message(
+      'Sign In',
+      name: 'sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Out`
+  String get sign_out {
+    return Intl.message(
+      'Sign Out',
+      name: 'sign_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get sign_up {
+    return Intl.message(
+      'Sign up',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get no_account {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'no_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get have_account {
+    return Intl.message(
+      'Already have an account?',
+      name: 'have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Or`
+  String get or {
+    return Intl.message(
+      'Or',
+      name: 'or',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the city name`
+  String get enter_city_name {
+    return Intl.message(
+      'Enter the city name',
+      name: 'enter_city_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a valid email`
+  String get valid_email {
+    return Intl.message(
+      'Enter a valid email',
+      name: 'valid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter min. 6 characters`
+  String get min_requirements {
+    return Intl.message(
+      'Enter min. 6 characters',
+      name: 'min_requirements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

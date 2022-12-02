@@ -1,8 +1,8 @@
+import 'package:city_weather/feature/login/presentation/login_screen.dart';
 import 'package:city_weather/firebase_options.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:city_weather/feature/search/domain/entities/location.dart';
-import 'package:city_weather/feature/search/presentation/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +15,6 @@ Future main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Hive.registerAdapter(LocationAdapter());
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
         primarySwatch: Colors.blueGrey,
       ),
-      home: const SearchScreen(),
+      home: const LoginScreen(),
       localizationsDelegates: const [
         S.delegate,
         ...GlobalMaterialLocalizations.delegates,

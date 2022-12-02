@@ -99,11 +99,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                         orElse: () => const SizedBox(),
                         loading: () => const Center(
                             child: CircularProgressIndicator.adaptive()),
-                        loaded: (searchResult) {
-                          return DropDownList(
-                            searchResult: searchResult,
-                          );
-                        },
+                        loaded: (searchResult) =>
+                            DropDownList(searchResult: searchResult),
                       ),
                     ],
                   ),

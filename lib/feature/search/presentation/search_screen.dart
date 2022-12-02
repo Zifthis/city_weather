@@ -56,7 +56,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           SizedBox(
             child: IconButton(
               icon: const Icon(Icons.delete_sweep_sharp),
-              onPressed: () => _clearList(),
+              onPressed: () =>
+                  ref.read(cityListNotifierProvider.notifier).deleteAllCities(),
             ),
           ),
           SizedBox(
@@ -111,10 +112,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ),
       ),
     );
-  }
-
-  void _clearList() {
-    ref.read(cityListNotifierProvider.notifier).deleteAllCities();
   }
 
   void _currentLocation(BuildContext context) async {

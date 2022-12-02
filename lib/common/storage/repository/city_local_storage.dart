@@ -1,5 +1,6 @@
-import 'package:city_weather/common/storage/model/city_model.dart';
+import 'package:city_weather/common/const.dart';
 import 'package:city_weather/common/storage/repository/i_city_local_storage.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
@@ -8,31 +9,33 @@ final localStorageRepositoryProvider = Provider<ICityLocalStorage>(
 );
 
 class CityLocalStorage extends ICityLocalStorage {
-  String boxLabel = 'cityKey';
-
   @override
-  Future<Box> openBox() async {
-    final box = await Hive.openBox(boxLabel);
+  Future<Box<Location>> openBox() async {
+    final box = await Hive.openBox<Location>(Const.boxLabel);
     return box;
   }
 
   @override
-  List<CityModel> getCityList(Box box) {
-    return box.values.toList().cast<CityModel>();
+  Future<List<Location>> getCityList() async {
+    final box = await openBox();
+    return box.values.toList();
   }
 
   @override
-  Future<void> addCityToList(Box box, CityModel cityModel) async {
-    await box.add(cityModel);
+  Future<void> addCityToList(Location location) async {
+    final box = await openBox();
+    await box.add(location);
   }
 
   @override
-  Future<void> removeCityFromList(Box box, int index) async {
+  Future<void> removeCityFromList(int index) async {
+    final box = await openBox();
     await box.deleteAt(index);
   }
 
   @override
-  Future<void> clearCityList(Box box) async {
+  Future<void> clearCityList() async {
+    final box = await openBox();
     await box.clear();
   }
 }

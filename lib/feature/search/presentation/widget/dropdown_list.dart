@@ -1,14 +1,12 @@
-import 'package:city_weather/common/storage/model/city_model.dart';
-import 'package:city_weather/common/storage/notifier/box_provider.dart';
 import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
-import 'package:city_weather/feature/search/domain/entities/search.dart';
+import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'card_list.dart';
 
 class DropDownList extends ConsumerWidget {
-  final List<Search> searchResult;
+  final List<Location> searchResult;
 
   const DropDownList({
     super.key,
@@ -31,8 +29,7 @@ class DropDownList extends ConsumerWidget {
   }
 
   void _onTap(int index, BuildContext context, WidgetRef ref) async {
-    final box = ref.read(hiveBoxProvider);
-    final cityModel = CityModel();
+    final box = await ref.read(cityListNotifierProvider.notifier).getBox();
     SnackBar snackBar = SnackBar(
       content: Text(
         '${searchResult[index].name} ${S.current.added_to}',
@@ -40,13 +37,11 @@ class DropDownList extends ConsumerWidget {
       ),
     );
 
-    if (box.value!.values.cast<CityModel>().any((element) =>
-        element.cityName.contains(searchResult[index].name ?? ''))) {
+    if (box.values.cast<Location>().any(
+        (element) => element.name!.contains(searchResult[index].name ?? ''))) {
     } else {
-      ref
-          .read(cityListNotifierProvider.notifier)
-          .addCity(cityModel..cityName = searchResult[index].name ?? '');
-      ref.read(cityListNotifierProvider.notifier).getCityList();
+      ref.read(cityListNotifierProvider.notifier).addCity(searchResult[index]);
+
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Weather {
-  Location? get location => throw _privateConstructorUsedError;
+  WeatherLocation? get location => throw _privateConstructorUsedError;
   Current? get current => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -28,9 +28,9 @@ abstract class $WeatherCopyWith<$Res> {
   factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
       _$WeatherCopyWithImpl<$Res, Weather>;
   @useResult
-  $Res call({Location? location, Current? current});
+  $Res call({WeatherLocation? location, Current? current});
 
-  $LocationCopyWith<$Res>? get location;
+  $WeatherLocationCopyWith<$Res>? get location;
   $CurrentCopyWith<$Res>? get current;
 }
 
@@ -54,7 +54,7 @@ class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as Location?,
+              as WeatherLocation?,
       current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
@@ -64,12 +64,12 @@ class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
 
   @override
   @pragma('vm:prefer-inline')
-  $LocationCopyWith<$Res>? get location {
+  $WeatherLocationCopyWith<$Res>? get location {
     if (_value.location == null) {
       return null;
     }
 
-    return $LocationCopyWith<$Res>(_value.location!, (value) {
+    return $WeatherLocationCopyWith<$Res>(_value.location!, (value) {
       return _then(_value.copyWith(location: value) as $Val);
     });
   }
@@ -94,10 +94,10 @@ abstract class _$$_WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       __$$_WeatherCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Location? location, Current? current});
+  $Res call({WeatherLocation? location, Current? current});
 
   @override
-  $LocationCopyWith<$Res>? get location;
+  $WeatherLocationCopyWith<$Res>? get location;
   @override
   $CurrentCopyWith<$Res>? get current;
 }
@@ -119,7 +119,7 @@ class __$$_WeatherCopyWithImpl<$Res>
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
-              as Location?,
+              as WeatherLocation?,
       current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$_Weather implements _Weather {
   const _$_Weather({this.location, this.current});
 
   @override
-  final Location? location;
+  final WeatherLocation? location;
   @override
   final Current? current;
 
@@ -164,11 +164,11 @@ class _$_Weather implements _Weather {
 }
 
 abstract class _Weather implements Weather {
-  const factory _Weather({final Location? location, final Current? current}) =
-      _$_Weather;
+  const factory _Weather(
+      {final WeatherLocation? location, final Current? current}) = _$_Weather;
 
   @override
-  Location? get location;
+  WeatherLocation? get location;
   @override
   Current? get current;
   @override

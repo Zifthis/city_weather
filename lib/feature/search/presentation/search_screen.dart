@@ -99,9 +99,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                         orElse: () => const SizedBox(),
                         loading: () => const Center(
                             child: CircularProgressIndicator.adaptive()),
-                        loaded: (searchResult) => DropDownList(
-                          searchResult: searchResult,
-                        ),
+                        loaded: (searchResult) {
+                          return DropDownList(
+                            searchResult: searchResult,
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -116,7 +118,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   void _clearList() {
     ref.read(cityListNotifierProvider.notifier).deleteAllCities();
-    ref.read(cityListNotifierProvider.notifier).getCityList();
   }
 
   void _currentLocation(BuildContext context) async {

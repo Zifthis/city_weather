@@ -42,13 +42,13 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<SearchResponse>> getSearchResults(search) async {
+  Future<List<Location>> getSearchResults(search) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'q': search};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<SearchResponse>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Location>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -61,7 +61,7 @@ class _ApiClient implements ApiClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => SearchResponse.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Location.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

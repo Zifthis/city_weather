@@ -20,7 +20,7 @@ mixin _$CityListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CityModel> cityList) loaded,
+    required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CityListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CityModel> cityList)? loaded,
+    TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CityListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CityModel> cityList)? loaded,
+    TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -125,7 +125,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CityModel> cityList) loaded,
+    required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -136,7 +136,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CityModel> cityList)? loaded,
+    TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -147,7 +147,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CityModel> cityList)? loaded,
+    TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -238,7 +238,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CityModel> cityList) loaded,
+    required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -249,7 +249,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CityModel> cityList)? loaded,
+    TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -260,7 +260,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CityModel> cityList)? loaded,
+    TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -317,7 +317,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CityModel> cityList});
+  $Res call({List<Location> cityList});
 }
 
 /// @nodoc
@@ -336,7 +336,7 @@ class __$$_LoadedCopyWithImpl<$Res>
       null == cityList
           ? _value._cityList
           : cityList // ignore: cast_nullable_to_non_nullable
-              as List<CityModel>,
+              as List<Location>,
     ));
   }
 }
@@ -344,11 +344,11 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<CityModel> cityList) : _cityList = cityList;
+  const _$_Loaded(final List<Location> cityList) : _cityList = cityList;
 
-  final List<CityModel> _cityList;
+  final List<Location> _cityList;
   @override
-  List<CityModel> get cityList {
+  List<Location> get cityList {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_cityList);
   }
@@ -381,7 +381,7 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CityModel> cityList) loaded,
+    required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
     return loaded(cityList);
@@ -392,7 +392,7 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CityModel> cityList)? loaded,
+    TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
     return loaded?.call(cityList);
@@ -403,7 +403,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CityModel> cityList)? loaded,
+    TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -452,9 +452,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements CityListState {
-  const factory _Loaded(final List<CityModel> cityList) = _$_Loaded;
+  const factory _Loaded(final List<Location> cityList) = _$_Loaded;
 
-  List<CityModel> get cityList;
+  List<Location> get cityList;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -524,7 +524,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<CityModel> cityList) loaded,
+    required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -535,7 +535,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<CityModel> cityList)? loaded,
+    TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -546,7 +546,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<CityModel> cityList)? loaded,
+    TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

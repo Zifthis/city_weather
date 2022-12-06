@@ -21,7 +21,6 @@ class DropDownList extends ConsumerWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () async {
-            //addCity()
             ref
                 .read(cityListNotifierProvider.notifier)
                 .addCity(searchResult[index]);

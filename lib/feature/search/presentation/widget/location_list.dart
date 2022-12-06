@@ -13,7 +13,6 @@ class CityLocationList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listState = ref.watch(cityListNotifierProvider);
-    print(listState);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(

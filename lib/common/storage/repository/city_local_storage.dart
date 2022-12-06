@@ -31,7 +31,9 @@ class CityLocalStorage extends ICityLocalStorage {
   EitherAppFailureOr<Unit> addCityToList(Location location) async {
     try {
       final box = await openBox();
-      box.add(location);
+      box.values.any((element) => element.name!.contains(location.name!))
+          ? null
+          : box.add(location);
       return const Right(unit);
     } catch (e) {
       return Left(AppFailure(title: e.toString()));

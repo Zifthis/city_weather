@@ -1,5 +1,5 @@
+import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
 import 'package:city_weather/feature/search/domain/entities/location.dart';
-import 'package:city_weather/feature/search/domain/notifier/save_city_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'card_list.dart';
@@ -21,7 +21,10 @@ class DropDownList extends ConsumerWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () async {
-            ref.read(saveCityProvider(searchResult[index]));
+            //addCity()
+            ref
+                .read(cityListNotifierProvider.notifier)
+                .addCity(searchResult[index]);
           },
           child: CardList(title: searchResult[index].name ?? ''),
         );

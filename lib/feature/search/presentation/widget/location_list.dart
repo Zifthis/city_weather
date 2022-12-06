@@ -13,6 +13,7 @@ class CityLocationList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listState = ref.watch(cityListNotifierProvider);
+    print(listState);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
@@ -35,7 +36,12 @@ class CityLocationList extends ConsumerWidget {
               orElse: () => null,
               error: (error) => Center(
                   child: Text(
-                '${S.current.error_search} \n$error',
+                error,
+                textAlign: TextAlign.center,
+              )),
+              emptyList: (value) => Center(
+                  child: Text(
+                value,
                 textAlign: TextAlign.center,
               )),
               loaded: (value) => ListOfCities(locationList: value),

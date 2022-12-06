@@ -7,6 +7,7 @@ part 'city_list_state.freezed.dart';
 class CityListState with _$CityListState {
   const factory CityListState.initial() = _Initial;
   const factory CityListState.loading() = _Loading;
+  const factory CityListState.emptyList(String emptyListMessage) = _EmptyList;
   const factory CityListState.loaded(
     List<Location> cityList,
   ) = _Loaded;

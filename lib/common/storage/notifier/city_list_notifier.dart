@@ -4,7 +4,6 @@ import 'package:city_weather/common/storage/repository/i_city_local_storage.dart
 import 'package:city_weather/feature/search/domain/entities/location.dart';
 import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 final cityListNotifierProvider =
     StateNotifierProvider<CityListNotifier, CityListState>(
@@ -23,15 +22,13 @@ class CityListNotifier extends StateNotifier<CityListState> {
   }
 
   Future<void> getCityList() async {
-    List<Location> locationList = await _cityLocalStorage.getCityList();
-    state = locationList.isNotEmpty
-        ? CityListState.loaded(locationList)
-        : CityListState.error(S.current.list_empty);
-  }
-
-  Future<Box> getBox() async {
-    Box box = await _cityLocalStorage.openBox();
-    return box;
+    final locationList = await _cityLocalStorage.getCityList();
+    state =
+        locationList.fold((error) => CityListState.error(error.title), (data) {
+      return data.isNotEmpty
+          ? CityListState.loaded(data)
+          : CityListState.emptyList(S.current.error_search);
+    });
   }
 
   Future<void> addCity(Location location) async {
@@ -46,6 +43,6 @@ class CityListNotifier extends StateNotifier<CityListState> {
 
   Future<void> deleteAllCities() async {
     await _cityLocalStorage.clearCityList();
-    getCityList();
+    state = CityListState.emptyList(S.current.error_search);
   }
 }

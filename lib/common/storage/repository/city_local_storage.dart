@@ -1,6 +1,9 @@
 import 'package:city_weather/common/const.dart';
+import 'package:city_weather/common/domain/error_handling/app_failure.dart';
+import 'package:city_weather/common/domain/error_handling/either_failure_or.dart';
 import 'package:city_weather/common/storage/repository/i_city_local_storage.dart';
 import 'package:city_weather/feature/search/domain/entities/location.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 
@@ -9,33 +12,51 @@ final localStorageRepositoryProvider = Provider<ICityLocalStorage>(
 );
 
 class CityLocalStorage extends ICityLocalStorage {
-  @override
   Future<Box<Location>> openBox() async {
     final box = await Hive.openBox<Location>(Const.boxLabel);
     return box;
   }
 
   @override
-  Future<List<Location>> getCityList() async {
-    final box = await openBox();
-    return box.values.toList();
+  EitherAppFailureOr<List<Location>> getCityList() async {
+    try {
+      final box = await openBox();
+      return Right(box.values.toList());
+    } catch (e) {
+      return Left(AppFailure(title: e.toString()));
+    }
   }
 
   @override
-  Future<void> addCityToList(Location location) async {
-    final box = await openBox();
-    await box.add(location);
+  EitherAppFailureOr<Unit> addCityToList(Location location) async {
+    try {
+      final box = await openBox();
+      box.add(location);
+      return const Right(unit);
+    } catch (e) {
+      return Left(AppFailure(title: e.toString()));
+    }
   }
 
   @override
-  Future<void> removeCityFromList(int index) async {
-    final box = await openBox();
-    await box.deleteAt(index);
+  EitherAppFailureOr<Unit> removeCityFromList(int index) async {
+    try {
+      final box = await openBox();
+      box.deleteAt(index);
+      return const Right(unit);
+    } catch (e) {
+      return Left(AppFailure(title: e.toString()));
+    }
   }
 
   @override
-  Future<void> clearCityList() async {
-    final box = await openBox();
-    await box.clear();
+  EitherAppFailureOr<Unit> clearCityList() async {
+    try {
+      final box = await openBox();
+      box.clear();
+      return const Right(unit);
+    } catch (e) {
+      return Left(AppFailure(title: e.toString()));
+    }
   }
 }

@@ -20,6 +20,7 @@ mixin _$CityListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) =>
@@ -28,6 +29,7 @@ mixin _$CityListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) =>
@@ -36,6 +38,7 @@ mixin _$CityListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$CityListState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) =>
@@ -53,6 +57,7 @@ mixin _$CityListState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) =>
@@ -61,6 +66,7 @@ mixin _$CityListState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -125,6 +131,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
@@ -136,6 +143,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -147,6 +155,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -162,6 +171,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
@@ -173,6 +183,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -184,6 +195,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -238,6 +250,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
@@ -249,6 +262,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -260,6 +274,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -275,6 +290,7 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
@@ -286,6 +302,7 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -297,6 +314,7 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -310,6 +328,158 @@ class _$_Loading implements _Loading {
 
 abstract class _Loading implements CityListState {
   const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$$_EmptyListCopyWith<$Res> {
+  factory _$$_EmptyListCopyWith(
+          _$_EmptyList value, $Res Function(_$_EmptyList) then) =
+      __$$_EmptyListCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String emptyListMessage});
+}
+
+/// @nodoc
+class __$$_EmptyListCopyWithImpl<$Res>
+    extends _$CityListStateCopyWithImpl<$Res, _$_EmptyList>
+    implements _$$_EmptyListCopyWith<$Res> {
+  __$$_EmptyListCopyWithImpl(
+      _$_EmptyList _value, $Res Function(_$_EmptyList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? emptyListMessage = null,
+  }) {
+    return _then(_$_EmptyList(
+      null == emptyListMessage
+          ? _value.emptyListMessage
+          : emptyListMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EmptyList implements _EmptyList {
+  const _$_EmptyList(this.emptyListMessage);
+
+  @override
+  final String emptyListMessage;
+
+  @override
+  String toString() {
+    return 'CityListState.emptyList(emptyListMessage: $emptyListMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EmptyList &&
+            (identical(other.emptyListMessage, emptyListMessage) ||
+                other.emptyListMessage == emptyListMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, emptyListMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EmptyListCopyWith<_$_EmptyList> get copyWith =>
+      __$$_EmptyListCopyWithImpl<_$_EmptyList>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
+    required TResult Function(List<Location> cityList) loaded,
+    required TResult Function(String error) error,
+  }) {
+    return emptyList(emptyListMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
+    TResult? Function(List<Location> cityList)? loaded,
+    TResult? Function(String error)? error,
+  }) {
+    return emptyList?.call(emptyListMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
+    TResult Function(List<Location> cityList)? loaded,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyList != null) {
+      return emptyList(emptyListMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return emptyList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return emptyList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyList != null) {
+      return emptyList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyList implements CityListState {
+  const factory _EmptyList(final String emptyListMessage) = _$_EmptyList;
+
+  String get emptyListMessage;
+  @JsonKey(ignore: true)
+  _$$_EmptyListCopyWith<_$_EmptyList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -381,6 +551,7 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
@@ -392,6 +563,7 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -403,6 +575,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -418,6 +591,7 @@ class _$_Loaded implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
@@ -429,6 +603,7 @@ class _$_Loaded implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -440,6 +615,7 @@ class _$_Loaded implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -524,6 +700,7 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
     required TResult Function(String error) error,
   }) {
@@ -535,6 +712,7 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
     TResult? Function(String error)? error,
   }) {
@@ -546,6 +724,7 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
@@ -561,6 +740,7 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmptyList value) emptyList,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
@@ -572,6 +752,7 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmptyList value)? emptyList,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -583,6 +764,7 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmptyList value)? emptyList,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),

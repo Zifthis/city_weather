@@ -11,7 +11,9 @@ class NetworkNotifier extends StateNotifier<ConnectivityResult?> {
     init();
   }
 
-  void init() => Connectivity().onConnectivityChanged.listen((e) {
-        state = e;
-      });
+  void init() => Connectivity().onConnectivityChanged.listen(
+        (e) {
+          state = e;
+        },
+      );
 }

@@ -22,7 +22,7 @@ mixin _$CityListState {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$CityListState {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$CityListState {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) {
     return initial();
   }
@@ -145,7 +145,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) {
     return initial?.call();
   }
@@ -157,7 +157,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -252,7 +252,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) {
     return loading();
   }
@@ -264,7 +264,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) {
     return loading?.call();
   }
@@ -276,7 +276,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -399,7 +399,7 @@ class _$_EmptyList implements _EmptyList {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) {
     return emptyList(emptyListMessage);
   }
@@ -411,7 +411,7 @@ class _$_EmptyList implements _EmptyList {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) {
     return emptyList?.call(emptyListMessage);
   }
@@ -423,7 +423,7 @@ class _$_EmptyList implements _EmptyList {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (emptyList != null) {
@@ -553,7 +553,7 @@ class _$_Loaded implements _Loaded {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) {
     return loaded(cityList);
   }
@@ -565,7 +565,7 @@ class _$_Loaded implements _Loaded {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) {
     return loaded?.call(cityList);
   }
@@ -577,7 +577,7 @@ class _$_Loaded implements _Loaded {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -641,7 +641,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({AppFailure error});
 }
 
 /// @nodoc
@@ -660,7 +660,7 @@ class __$$_ErrorCopyWithImpl<$Res>
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as AppFailure,
     ));
   }
 }
@@ -671,7 +671,7 @@ class _$_Error implements _Error {
   const _$_Error(this.error);
 
   @override
-  final String error;
+  final AppFailure error;
 
   @override
   String toString() {
@@ -702,7 +702,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function(String emptyListMessage) emptyList,
     required TResult Function(List<Location> cityList) loaded,
-    required TResult Function(String error) error,
+    required TResult Function(AppFailure error) error,
   }) {
     return error(this.error);
   }
@@ -714,7 +714,7 @@ class _$_Error implements _Error {
     TResult? Function()? loading,
     TResult? Function(String emptyListMessage)? emptyList,
     TResult? Function(List<Location> cityList)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function(AppFailure error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -726,7 +726,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(String emptyListMessage)? emptyList,
     TResult Function(List<Location> cityList)? loaded,
-    TResult Function(String error)? error,
+    TResult Function(AppFailure error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -777,9 +777,9 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements CityListState {
-  const factory _Error(final String error) = _$_Error;
+  const factory _Error(final AppFailure error) = _$_Error;
 
-  String get error;
+  AppFailure get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       throw _privateConstructorUsedError;

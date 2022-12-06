@@ -23,8 +23,7 @@ class CityListNotifier extends StateNotifier<CityListState> {
 
   Future<void> getCityList() async {
     final locationList = await _cityLocalStorage.getCityList();
-    state =
-        locationList.fold((error) => CityListState.error(error.title), (data) {
+    state = locationList.fold((error) => CityListState.error(error), (data) {
       return data.isNotEmpty
           ? CityListState.loaded(data)
           : CityListState.emptyList(S.current.error_search);

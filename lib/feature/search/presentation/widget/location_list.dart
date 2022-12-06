@@ -35,7 +35,7 @@ class CityLocationList extends ConsumerWidget {
               orElse: () => null,
               error: (error) => Center(
                   child: Text(
-                error,
+                error.title,
                 textAlign: TextAlign.center,
               )),
               emptyList: (value) => Center(

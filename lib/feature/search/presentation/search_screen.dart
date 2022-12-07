@@ -1,5 +1,6 @@
 import 'package:city_weather/common/network/network_notifier.dart';
 import 'package:city_weather/common/storage/notifier/city_list_notifier.dart';
+import 'package:city_weather/common/storage/notifier/city_list_state.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location.provider.dart';
 import 'package:city_weather/feature/geolocator/domain/notifier/current_location_notifier.dart';
 import 'package:city_weather/feature/geolocator/presentation/current_location_screen.dart';
@@ -46,6 +47,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         }
       },
     );
+
+    ref.listen<CityListState>(cityListNotifierProvider, (_, next) {
+      next.maybeMap(
+          orElse: (() {}),
+          error: (value) {
+            SnackBar snackBar = SnackBar(
+              content: Text(
+                value.error.title,
+                textAlign: TextAlign.center,
+              ),
+            );
+            return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          });
+    });
 
     return Scaffold(
       appBar: AppBar(

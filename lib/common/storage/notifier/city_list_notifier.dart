@@ -2,7 +2,6 @@ import 'package:city_weather/common/storage/notifier/city_list_state.dart';
 import 'package:city_weather/common/storage/repository/city_local_storage.dart';
 import 'package:city_weather/common/storage/repository/i_city_local_storage.dart';
 import 'package:city_weather/feature/search/domain/entities/location.dart';
-import 'package:city_weather/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final cityListNotifierProvider =
@@ -26,7 +25,7 @@ class CityListNotifier extends StateNotifier<CityListState> {
     state = locationList.fold((error) => CityListState.error(error), (data) {
       return data.isNotEmpty
           ? CityListState.loaded(data)
-          : CityListState.emptyList(S.current.error_search);
+          : const CityListState.emptyList();
     });
   }
 
@@ -42,6 +41,6 @@ class CityListNotifier extends StateNotifier<CityListState> {
 
   Future<void> deleteAllCities() async {
     await _cityLocalStorage.clearCityList();
-    state = CityListState.emptyList(S.current.error_search);
+    state = const CityListState.emptyList();
   }
 }

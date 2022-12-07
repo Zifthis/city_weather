@@ -38,9 +38,9 @@ class CityLocationList extends ConsumerWidget {
                 error.title,
                 textAlign: TextAlign.center,
               )),
-              emptyList: (value) => Center(
+              emptyList: () => Center(
                   child: Text(
-                value,
+                S.current.error_search,
                 textAlign: TextAlign.center,
               )),
               loaded: (value) => ListOfCities(locationList: value),
